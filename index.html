@@ -7,6 +7,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Noto+Serif+JP:wght@200;300;400&display=swap" rel="stylesheet" />
+  <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
@@ -1265,7 +1266,7 @@
         外見が変わると、人生が変わる。<br>
         ファッションコンサルタントとして、多くの方の人生を変えてきました。
       </p>
-      <a href="https://t.co/bfM0wqM7fj" target="_blank" rel="noopener" class="hero-cta">
+      <a href="https://t.co/bfM0wqM7fj" target="_blank" rel="noopener" class="hero-cta cms-line-url">
         <svg width="18" height="18" viewBox="0 0 24 24" fill="white"><path d="M20 2H4C2.9 2 2 2.9 2 4v18l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2z"/></svg>
         無料カウンセリングを受ける
       </a>
@@ -1276,19 +1277,19 @@
   <!-- NUMBERS -->
   <section id="numbers">
     <div class="numbers-grid">
-      <div class="number-card fade-in">
+      <div class="number-card fade-in" data-num="0">
         <div class="number-val">100<span class="number-unit">+</span></div>
         <div class="number-label">支援実績<br>満足率 98%</div>
       </div>
-      <div class="number-card fade-in" style="transition-delay:0.12s">
+      <div class="number-card fade-in" style="transition-delay:0.12s" data-num="1">
         <div class="number-val">1.1<span class="number-unit">億</span></div>
         <div class="number-label">支援者の最高到達<br>年商実績</div>
       </div>
-      <div class="number-card fade-in" style="transition-delay:0.24s">
+      <div class="number-card fade-in" style="transition-delay:0.24s" data-num="2">
         <div class="number-val">3<span class="number-unit">万人</span></div>
         <div class="number-label">支援者の<br>フォロワー獲得実績</div>
       </div>
-      <div class="number-card fade-in" style="transition-delay:0.36s">
+      <div class="number-card fade-in" style="transition-delay:0.36s" data-num="3">
         <div class="number-val">1<span class="number-unit">位</span></div>
         <div class="number-label">業界初の手法で<br>No.1の実績</div>
       </div>
@@ -1451,7 +1452,7 @@
           <p style="font-family:'Cormorant Garamond',serif; font-size:clamp(1.5rem,2.8vw,2.2rem); font-weight:300; color:#fff; line-height:1.6; letter-spacing:0.1em; margin-bottom:16px;">外見を変えることが、<br>人生を変える<br><span style="color:var(--accent); font-style:italic;">最も確実な手段だ。</span></p>
           <div style="width:32px; height:1px; background:var(--accent); margin:20px auto;"></div>
           <p style="font-size:0.75rem; line-height:2.2; letter-spacing:0.08em; color:rgba(255,255,255,0.5); margin-bottom:36px;">まずは無料カウンセリングで、あなたの現状とビジョンをお聞かせください。</p>
-          <a href="https://t.co/bfM0wqM7fj" target="_blank" rel="noopener" style="display:inline-block; background:var(--line-green); color:#fff; text-decoration:none; padding:16px 32px; font-size:0.78rem; letter-spacing:0.15em; border-radius:4px; transition:opacity 0.2s;">無料カウンセリングを受ける</a>
+          <a href="https://t.co/bfM0wqM7fj" target="_blank" rel="noopener" class="cms-line-url" style="display:inline-block; background:var(--line-green); color:#fff; text-decoration:none; padding:16px 32px; font-size:0.78rem; letter-spacing:0.15em; border-radius:4px; transition:opacity 0.2s;">無料カウンセリングを受ける</a>
         </div>
       </div>
 
@@ -1525,7 +1526,7 @@
 
     <div class="free-cta-wrap fade-in">
       <p class="free-cta-text">↓ 上記のノウハウを公式LINEで無料受け取り ↓</p>
-      <a href="https://t.co/bfM0wqM7fj" target="_blank" rel="noopener" class="cta-main-btn" style="font-size:0.82rem;">
+      <a href="https://t.co/bfM0wqM7fj" target="_blank" rel="noopener" class="cta-main-btn cms-line-url" style="font-size:0.82rem;">
         <svg width="22" height="22" viewBox="0 0 24 24" fill="white"><path d="M12 2C6.48 2 2 6.02 2 11c0 2.54 1.12 4.83 2.9 6.44V22l4.56-2.5C10.28 19.82 11.12 20 12 20c5.52 0 10-4.02 10-9S17.52 2 12 2zm1 13H11v-2h2v2zm0-4H11V7h2v4z"/></svg>
         公式LINEで無料ノウハウを受け取る
       </a>
@@ -1559,7 +1560,7 @@
       </div>
     </div>
 
-    <a href="https://t.co/bfM0wqM7fj" target="_blank" rel="noopener" class="cta-main-btn fade-in">
+    <a href="https://t.co/bfM0wqM7fj" target="_blank" rel="noopener" class="cta-main-btn cms-line-url fade-in">
       <svg width="24" height="24" viewBox="0 0 24 24" fill="white"><path d="M20 2H4C2.9 2 2 2.9 2 4v18l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2z"/></svg>
       無料カウンセリングを受ける
     </a>
@@ -1632,12 +1633,10 @@
     <p class="section-lead fade-in">ファッション・外見改善のノウハウを動画で発信中。チャンネル登録して最新動画をチェック。</p>
 
     <div class="youtube-grid">
-      <div class="youtube-embed-wrap fade-in">
-        <!-- YouTube動画URL取得後にiframeに差し替え -->
-        <!-- <iframe src="https://www.youtube.com/embed/VIDEO_ID" allowfullscreen></iframe> -->
+      <div class="youtube-embed-wrap fade-in" id="yt-embed-1">
         <span class="youtube-placeholder-text">YouTube Coming Soon</span>
       </div>
-      <div class="youtube-embed-wrap fade-in" style="transition-delay:0.15s">
+      <div class="youtube-embed-wrap fade-in" style="transition-delay:0.15s" id="yt-embed-2">
         <span class="youtube-placeholder-text">YouTube Coming Soon</span>
       </div>
     </div>
@@ -1692,7 +1691,7 @@
   </footer>
 
   <!-- LINE FLOAT -->
-  <a href="https://t.co/bfM0wqM7fj" target="_blank" rel="noopener" class="line-float" aria-label="LINE 無料カウンセリング">
+  <a href="https://t.co/bfM0wqM7fj" target="_blank" rel="noopener" class="line-float cms-line-url" aria-label="LINE 無料カウンセリング">
     <div class="line-float-btn">
       <svg viewBox="0 0 24 24"><path d="M19.365 9.89c.50 0 .91.41.91.91s-.41.91-.91.91h-2.28v1.37h2.28c.50 0 .91.41.91.91s-.41.91-.91.91h-3.19c-.50 0-.91-.41-.91-.91V9.89c0-.5.41-.91.91-.91h3.19zm-10.97 4.1c0 .5-.41.91-.91.91s-.91-.41-.91-.91V9.89c0-.5.41-.91.91-.91s.91.41.91.91v4.1zm-3.06.91H5.19c-.50 0-.91-.41-.91-.91V9.89c0-.5.41-.91.91-.91s.91.41.91.91v3.19h1.37c.50 0 .91.41.91.91s-.41.91-.91.91zm6.15-4.55L9.21 13.5V9.89c0-.5-.41-.91-.91-.91s-.91.41-.91.91v4.1c0 .5.41.91.91.91a.9.9 0 0 0 .65-.28l2.23-3.14v2.51c0 .5.41.91.91.91s.91-.41.91-.91V9.89c0-.5-.41-.91-.91-.91a.9.9 0 0 0-.65.28zM12 2C6.48 2 2 5.92 2 10.73c0 3.8 2.63 7.06 6.35 8.48-.19.68-.73 2.62-.84 3.02-.13.48.17.48.37.34.17-.11 2.66-1.76 3.72-2.46.46.06.93.09 1.4.09 5.52 0 10-3.92 10-8.73S17.52 2 12 2z"/></svg>
     </div>
@@ -1817,6 +1816,83 @@
         lbImg.src = images[currentIndex];
       }
     });
+  </script>
+
+  <!-- CMS content loader -->
+  <script>
+    (function () {
+      fetch('/content.json')
+        .then(function (r) { return r.json(); })
+        .then(function (c) {
+
+          // LINE URL（全ボタン）
+          if (c.line_url) {
+            document.querySelectorAll('.cms-line-url').forEach(function (el) {
+              el.href = c.line_url;
+            });
+          }
+
+          // X URL
+          if (c.x_url) {
+            const xCard = document.querySelector('a[href="https://x.com/st_r0817"]');
+            if (xCard) xCard.href = c.x_url;
+          }
+
+          // Note URL
+          if (c.note_url) {
+            const noteCard = document.querySelector('a[href="https://note.com/amis"]');
+            if (noteCard) { noteCard.href = c.note_url; noteCard.querySelector('.sns-handle').textContent = c.note_url.replace('https://', ''); }
+          }
+
+          // Hero copy
+          if (c.hero) {
+            const heroCopy = document.querySelector('.hero-copy');
+            if (heroCopy && c.hero.copy_main && c.hero.copy_em) {
+              heroCopy.innerHTML = c.hero.copy_main + '<em>' + c.hero.copy_em + '</em>';
+            }
+            const heroDesc = document.querySelector('.hero-desc');
+            if (heroDesc && c.hero.desc_line1 && c.hero.desc_line2) {
+              heroDesc.innerHTML = c.hero.desc_line1 + '<br>' + c.hero.desc_line2;
+            }
+          }
+
+          // Numbers
+          if (c.numbers) {
+            document.querySelectorAll('[data-num]').forEach(function (card) {
+              const i = parseInt(card.dataset.num, 10);
+              const n = c.numbers[i];
+              if (!n) return;
+              const valEl = card.querySelector('.number-val');
+              const labelEl = card.querySelector('.number-label');
+              if (valEl) valEl.innerHTML = n.val + '<span class="number-unit">' + n.unit + '</span>';
+              if (labelEl) labelEl.innerHTML = n.label_line1 + '<br>' + n.label_line2;
+            });
+          }
+
+          // YouTube
+          function setYT(id, videoId) {
+            if (!videoId) return;
+            const wrap = document.getElementById(id);
+            if (!wrap) return;
+            wrap.innerHTML = '<iframe src="https://www.youtube.com/embed/' + videoId + '" allowfullscreen loading="lazy" style="width:100%;height:100%;border:0;"></iframe>';
+          }
+          if (c.youtube_id_1) setYT('yt-embed-1', c.youtube_id_1);
+          if (c.youtube_id_2) setYT('yt-embed-2', c.youtube_id_2);
+
+        })
+        .catch(function () { /* fallback: static HTML content is shown as-is */ });
+
+      // Netlify Identity redirect
+      if (window.netlifyIdentity) {
+        window.netlifyIdentity.on('init', function (user) {
+          if (!user) {
+            window.netlifyIdentity.on('login', function () {
+              document.location.href = '/admin/';
+            });
+          }
+        });
+      }
+    })();
   </script>
 </body>
 </html>
