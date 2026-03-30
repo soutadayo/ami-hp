@@ -390,6 +390,18 @@
       border: 1px solid var(--line-color);
       border-radius: 4px;
       padding: 28px 28px 24px;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      text-decoration: none;
+      color: var(--black);
+      transition: transform 0.2s, box-shadow 0.2s, border-color 0.2s;
+    }
+
+    a.m-comm-card:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 8px 24px rgba(0,0,0,0.08);
+      border-color: var(--accent);
     }
 
     .m-comm-num {
@@ -398,7 +410,6 @@
       letter-spacing: 0.4em;
       color: var(--accent);
       text-transform: uppercase;
-      margin-bottom: 10px;
     }
 
     .m-comm-title {
@@ -406,7 +417,6 @@
       font-size: 1rem;
       font-weight: 400;
       letter-spacing: 0.1em;
-      margin-bottom: 12px;
     }
 
     .m-comm-body {
@@ -414,6 +424,86 @@
       line-height: 2.1;
       letter-spacing: 0.06em;
       color: #555;
+      flex: 1;
+    }
+
+    .m-comm-footer {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding-top: 12px;
+      border-top: 1px solid var(--line-color);
+      margin-top: 4px;
+    }
+
+    .m-comm-pw {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 0.65rem;
+      letter-spacing: 0.15em;
+      color: var(--gray);
+    }
+
+    .m-comm-pw span {
+      font-weight: 600;
+      color: var(--black);
+      letter-spacing: 0.1em;
+    }
+
+    .m-comm-arrow {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 0.65rem;
+      letter-spacing: 0.3em;
+      color: var(--accent);
+      text-transform: uppercase;
+    }
+
+    .m-comm-tag {
+      display: inline-block;
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 0.58rem;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      color: rgba(184,154,106,0.7);
+      border: 1px solid rgba(184,154,106,0.4);
+      padding: 3px 10px;
+      border-radius: 2px;
+    }
+
+    .m-comm-card.soon { opacity: 0.6; pointer-events: none; }
+
+    /* FASHION INDEX CARD */
+    .m-fashion-index {
+      background: var(--black);
+      border-radius: 4px;
+      padding: 20px 24px;
+      margin-bottom: 20px;
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      text-decoration: none;
+      transition: opacity 0.2s;
+    }
+    .m-fashion-index:hover { opacity: 0.85; }
+    .m-fi-label {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 0.6rem;
+      letter-spacing: 0.4em;
+      color: var(--accent);
+      text-transform: uppercase;
+      white-space: nowrap;
+    }
+    .m-fi-text {
+      font-family: 'Noto Serif JP', serif;
+      font-size: 0.8rem;
+      letter-spacing: 0.08em;
+      color: var(--white);
+    }
+    .m-fi-arrow {
+      margin-left: auto;
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 0.65rem;
+      letter-spacing: 0.3em;
+      color: var(--accent);
     }
 
     /* FOOTER */
@@ -435,6 +525,7 @@
       .m-knowhub-card:nth-child(5) { grid-column: 1 / -1; max-width: 240px; margin: 0 auto; }
       .m-video-grid { grid-template-columns: 1fr; }
       .m-comm-grid { grid-template-columns: 1fr; }
+      .m-fashion-index { flex-wrap: wrap; gap: 10px; }
     }
   </style>
 </head>
@@ -471,36 +562,42 @@
       <div class="m-divider"></div>
       <p class="m-lead">ファッション・ヘア・スキンケア・メイク・フレグランス。外見を変える5つの領域の最新アイテムと手法を、カテゴリ別にまとめました。</p>
 
+      <a href="https://ami0.com/2025/12/27/item/" target="_blank" rel="noopener" class="m-fashion-index">
+        <span class="m-fi-label">Must Read First</span>
+        <span class="m-fi-text">全カテゴリ共通：アイテムガイド総論</span>
+        <span class="m-fi-arrow">Open →</span>
+      </a>
+
       <div class="m-knowhub-grid">
-        <a href="https://note.com/amis/n/n73e553f153fe" target="_blank" rel="noopener" class="m-knowhub-card">
+        <a href="https://note.com/preview/n73e553f153fe?prev_access_key=745b63760c822a427f4d4956a6afdc12" target="_blank" rel="noopener" class="m-knowhub-card">
           <span class="m-kh-icon">👔</span>
           <span class="m-kh-en">Fashion</span>
           <span class="m-kh-title">ファッション</span>
           <p class="m-kh-desc">アウター・トップス・ボトムス・シューズ・アクセサリー。誰でもオーラが出るアイテムを全公開。</p>
           <span class="m-kh-btn">Read</span>
         </a>
-        <a href="https://note.com/amis/n/n0d140a4e7f8d" target="_blank" rel="noopener" class="m-knowhub-card">
+        <a href="https://note.com/preview/n0d140a4e7f8d?prev_access_key=7617d6b0348ff3440b848f6254d308b2" target="_blank" rel="noopener" class="m-knowhub-card">
           <span class="m-kh-icon">✂️</span>
           <span class="m-kh-en">Hair</span>
           <span class="m-kh-title">ヘア</span>
           <p class="m-kh-desc">髪型・ヘアケア・スタイリング。外見偏差値を最も手軽に上げられる領域のガイド。</p>
           <span class="m-kh-btn">Read</span>
         </a>
-        <a href="https://note.com/amis/n/nc978d7f78980" target="_blank" rel="noopener" class="m-knowhub-card">
+        <a href="https://note.com/preview/nc978d7f78980?prev_access_key=78f8d24a6f7ded9640efb32d1f1e72ee" target="_blank" rel="noopener" class="m-knowhub-card">
           <span class="m-kh-icon">💧</span>
           <span class="m-kh-en">Skin Care</span>
           <span class="m-kh-title">スキンケア</span>
           <p class="m-kh-desc">肌質改善・クレンジング・保湿。男性が最も差をつけられる、見た目の土台。</p>
           <span class="m-kh-btn">Read</span>
         </a>
-        <a href="https://note.com/amis/n/n978ecab9b6b7" target="_blank" rel="noopener" class="m-knowhub-card">
+        <a href="https://note.com/preview/n978ecab9b6b7?prev_access_key=a941f360bc7039fb7dd1ace5cd3f3b2a" target="_blank" rel="noopener" class="m-knowhub-card">
           <span class="m-kh-icon">🪞</span>
           <span class="m-kh-en">Make Up</span>
           <span class="m-kh-title">メイク</span>
           <p class="m-kh-desc">BBクリーム・眉・リップ。バレないナチュラルメイクで清潔感を底上げする方法。</p>
           <span class="m-kh-btn">Read</span>
         </a>
-        <a href="https://note.com/amis/n/nb525688b1088" target="_blank" rel="noopener" class="m-knowhub-card">
+        <a href="https://note.com/preview/nb525688b1088?prev_access_key=ad5ef35c8615f657c0efedfd13e0a4f1" target="_blank" rel="noopener" class="m-knowhub-card">
           <span class="m-kh-icon">🌸</span>
           <span class="m-kh-en">Fragrance</span>
           <span class="m-kh-title">フレグランス</span>
@@ -538,61 +635,131 @@
     <!-- Communication -->
     <div class="m-section">
       <span class="m-section-label">Communication</span>
-      <h2 class="m-section-title">コミュニケーション<br><em>10のテーマ</em></h2>
+      <h2 class="m-section-title">コミュニケーション<br><em>11のテーマ</em></h2>
       <div class="m-divider"></div>
-      <p class="m-lead">外見が整った先にある、コミュニケーションの核心。amiのコンサルで扱う10のテーマ。</p>
+      <p class="m-lead">外見が整った先にある、コミュニケーションの核心。amiのコンサルで扱う11のテーマ。各記事はパスワード保護されています — パスワードはamiにご確認ください。</p>
 
       <div class="m-comm-grid">
-        <div class="m-comm-card">
+
+        <!-- 00: Communication 総論 -->
+        <a href="https://ami0.com/2025/12/06/essential0/" target="_blank" rel="noopener" class="m-comm-card">
+          <div class="m-comm-num">Topic 00</div>
+          <div class="m-comm-title">Communication</div>
+          <p class="m-comm-body">関係構築の全体像。このシリーズを読む前に必ずここから始める。</p>
+          <div class="m-comm-footer">
+            <span class="m-comm-pw">Pass：<span>amiに確認</span></span>
+            <span class="m-comm-arrow">Open →</span>
+          </div>
+        </a>
+
+        <!-- 01: 長期関係 -->
+        <a href="https://ami0.com/2025/12/06/essential1/" target="_blank" rel="noopener" class="m-comm-card">
           <div class="m-comm-num">Topic 01</div>
           <div class="m-comm-title">長期関係</div>
-          <p class="m-comm-body">コンテンツは随時追加されます。</p>
-        </div>
-        <div class="m-comm-card">
+          <p class="m-comm-body">メッセージ・電話・デートの積み重ねで関係を続ける方法。Message / Call / Escort へのリンクも含む。</p>
+          <div class="m-comm-footer">
+            <span class="m-comm-pw">Pass：<span>amiに確認</span></span>
+            <span class="m-comm-arrow">Open →</span>
+          </div>
+        </a>
+
+        <!-- 02: 告白 -->
+        <div class="m-comm-card soon">
           <div class="m-comm-num">Topic 02</div>
           <div class="m-comm-title">告白の仕方・タイミング</div>
-          <p class="m-comm-body">コンテンツは随時追加されます。</p>
+          <p class="m-comm-body">コンテンツ準備中です。</p>
+          <div class="m-comm-footer">
+            <span class="m-comm-tag">Coming Soon</span>
+          </div>
         </div>
-        <div class="m-comm-card">
+
+        <!-- 03: Escort -->
+        <a href="https://ami0.com/2025/07/12/date/" target="_blank" rel="noopener" class="m-comm-card">
           <div class="m-comm-num">Topic 03</div>
           <div class="m-comm-title">Escort</div>
-          <p class="m-comm-body">コンテンツは随時追加されます。</p>
-        </div>
-        <div class="m-comm-card">
+          <p class="m-comm-body">デートのエスコート術。場所選び・動き方・気遣いの全て。</p>
+          <div class="m-comm-footer">
+            <span class="m-comm-pw">Pass：<span>amiに確認</span></span>
+            <span class="m-comm-arrow">Open →</span>
+          </div>
+        </a>
+
+        <!-- 04: Call -->
+        <a href="https://ami0.com/2025/07/12/phone/" target="_blank" rel="noopener" class="m-comm-card">
           <div class="m-comm-num">Topic 04</div>
           <div class="m-comm-title">Call</div>
-          <p class="m-comm-body">コンテンツは随時追加されます。</p>
-        </div>
-        <div class="m-comm-card">
+          <p class="m-comm-body">電話での話し方・タイミング・頻度。声だけで印象を作るノウハウ。</p>
+          <div class="m-comm-footer">
+            <span class="m-comm-pw">Pass：<span>amiに確認</span></span>
+            <span class="m-comm-arrow">Open →</span>
+          </div>
+        </a>
+
+        <!-- 05: Message -->
+        <a href="https://ami0.com/2025/06/08/message/" target="_blank" rel="noopener" class="m-comm-card">
           <div class="m-comm-num">Topic 05</div>
           <div class="m-comm-title">Message</div>
-          <p class="m-comm-body">コンテンツは随時追加されます。</p>
-        </div>
-        <div class="m-comm-card">
+          <p class="m-comm-body">テキストでの好感度を上げる文章術。返信率・テンション管理・既読スルー対策。</p>
+          <div class="m-comm-footer">
+            <span class="m-comm-pw">Pass：<span>amiに確認</span></span>
+            <span class="m-comm-arrow">Open →</span>
+          </div>
+        </a>
+
+        <!-- 06: Encounter -->
+        <a href="https://ami0.com/2025/07/12/encounter/" target="_blank" rel="noopener" class="m-comm-card">
           <div class="m-comm-num">Topic 06</div>
           <div class="m-comm-title">Encounter</div>
-          <p class="m-comm-body">コンテンツは随時追加されます。</p>
-        </div>
-        <div class="m-comm-card">
+          <p class="m-comm-body">出会いの作り方・最初の印象・ナンパ・マッチングアプリの攻略。</p>
+          <div class="m-comm-footer">
+            <span class="m-comm-pw">Pass：<span>amiに確認</span></span>
+            <span class="m-comm-arrow">Open →</span>
+          </div>
+        </a>
+
+        <!-- 07: リアクション -->
+        <a href="https://ami0.com/2025/12/04/essential%ef%bd%9c%e3%83%aa%e3%82%a2%e3%82%af%e3%82%b7%e3%83%a7%e3%83%b3/" target="_blank" rel="noopener" class="m-comm-card">
           <div class="m-comm-num">Topic 07</div>
           <div class="m-comm-title">リアクション</div>
-          <p class="m-comm-body">コンテンツは随時追加されます。</p>
-        </div>
-        <div class="m-comm-card">
+          <p class="m-comm-body">相手の話への反応の仕方。感情を引き出し、会話を深めるリアクション術。</p>
+          <div class="m-comm-footer">
+            <span class="m-comm-pw">Pass：<span>amiに確認</span></span>
+            <span class="m-comm-arrow">Open →</span>
+          </div>
+        </a>
+
+        <!-- 08: Episode -->
+        <a href="https://ami0.com/2025/07/12/episode/" target="_blank" rel="noopener" class="m-comm-card">
           <div class="m-comm-num">Topic 08</div>
           <div class="m-comm-title">Episode</div>
-          <p class="m-comm-body">コンテンツは随時追加されます。</p>
-        </div>
-        <div class="m-comm-card">
+          <p class="m-comm-body">エピソードトーク・価値観トーク・デートでの会話展開。<br>
+            <a href="https://ami0.com/2025/07/12/date/" target="_blank" rel="noopener" style="font-size:0.65rem;color:var(--accent);">→ デート会話編もあり</a></p>
+          <div class="m-comm-footer">
+            <span class="m-comm-pw">Pass：<span>amiに確認</span></span>
+            <span class="m-comm-arrow">Open →</span>
+          </div>
+        </a>
+
+        <!-- 09: 話す力 -->
+        <div class="m-comm-card soon">
           <div class="m-comm-num">Topic 09</div>
           <div class="m-comm-title">話す力</div>
-          <p class="m-comm-body">コンテンツは随時追加されます。</p>
+          <p class="m-comm-body">コンテンツ準備中です。</p>
+          <div class="m-comm-footer">
+            <span class="m-comm-tag">Coming Soon</span>
+          </div>
         </div>
-        <div class="m-comm-card">
+
+        <!-- 10: 聞く力 -->
+        <div class="m-comm-card soon">
           <div class="m-comm-num">Topic 10</div>
           <div class="m-comm-title">聞く力</div>
-          <p class="m-comm-body">コンテンツは随時追加されます。</p>
+          <p class="m-comm-body">コンテンツ準備中です。</p>
+          <div class="m-comm-footer">
+            <span class="m-comm-tag">Coming Soon</span>
+          </div>
         </div>
+
       </div>
     </div>
 
