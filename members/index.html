@@ -452,14 +452,14 @@
       <p class="gate-error" id="gateError">パスワードが正しくありません</p>
       <button type="submit" class="gate-btn">Enter</button>
     </form>
-    <a href="/" class="gate-back">← トップに戻る</a>
+    <a href="../" class="gate-back">← トップに戻る</a>
   </div>
 
   <!-- ── MEMBERS CONTENT ── -->
   <div id="members-content">
 
     <nav class="m-nav">
-      <a href="/" class="m-nav-logo">ami</a>
+      <a href="../" class="m-nav-logo">ami</a>
       <span class="m-nav-badge">Members</span>
       <button class="m-logout-btn" id="logoutBtn">Logout</button>
     </nav>
@@ -616,7 +616,7 @@
 
     function setCookie(days) {
       const expires = new Date(Date.now() + days * 864e5).toUTCString();
-      document.cookie = COOKIE_KEY + '=1; expires=' + expires + '; path=/members; SameSite=Strict';
+      document.cookie = COOKIE_KEY + '=1; expires=' + expires + '; path=/; SameSite=Strict';
     }
 
     function hasCookie() {
@@ -624,7 +624,7 @@
     }
 
     function deleteCookie() {
-      document.cookie = COOKIE_KEY + '=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/members;';
+      document.cookie = COOKIE_KEY + '=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;';
     }
 
     function showContent() {
