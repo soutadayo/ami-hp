@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="robots" content="noindex, nofollow" />
+  <title>Fragrance — ami</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Noto+Serif+JP:wght@200;300;400&display=swap" rel="stylesheet" />
+  
+  <style>
+    :root {
+      --black: #0a0a0a;
+      --white: #fff;
+      --off-white: #f7f5f2;
+      --accent: #b89a6a;
+      --gray: #888;
+      --line-color: #2a2a2a;
+      --line-green: #06c755;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: 'Noto Serif JP', serif;
+      background: var(--black);
+      color: var(--white);
+      min-height: 100vh;
+      line-height: 1.85;
+    }
+    #page { display: none; }
+
+    /* ── NAV ── */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 20px 32px;
+      background: rgba(10,10,10,0.95);
+      backdrop-filter: blur(8px);
+      border-bottom: 1px solid var(--line-color);
+    }
+    .nav-logo {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.4rem;
+      font-weight: 300;
+      letter-spacing: 0.3em;
+      color: var(--white);
+      text-decoration: none;
+    }
+    .nav-back {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 0.7rem;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      color: var(--accent);
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      transition: opacity 0.2s;
+    }
+    .nav-back:hover { opacity: 0.7; }
+    .nav-back::before { content: '←'; }
+
+    /* ── HERO ── */
+    .page-hero {
+      padding: 140px 32px 60px;
+      border-bottom: 1px solid var(--line-color);
+      max-width: 860px;
+      margin: 0 auto;
+    }
+    .page-category {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 0.65rem;
+      letter-spacing: 0.6em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 24px;
+    }
+    .page-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(2.2rem, 5vw, 3.8rem);
+      font-weight: 300;
+      line-height: 1.2;
+      letter-spacing: 0.05em;
+      margin-bottom: 16px;
+    }
+    .page-subtitle {
+      font-size: 0.85rem;
+      color: var(--gray);
+      letter-spacing: 0.05em;
+    }
+
+    /* ── CONTENT ── */
+    .content {
+      max-width: 860px;
+      margin: 0 auto;
+      padding: 60px 32px 120px;
+    }
+    .content p {
+      font-size: 0.95rem;
+      margin-bottom: 1.6em;
+      color: #e8e4de;
+    }
+    .content h2 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.6rem;
+      font-weight: 400;
+      letter-spacing: 0.05em;
+      margin: 2.5em 0 1em;
+      padding-bottom: 0.5em;
+      border-bottom: 1px solid var(--line-color);
+      color: var(--white);
+    }
+    .content h3 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.2rem;
+      font-weight: 400;
+      margin: 2em 0 0.8em;
+      color: var(--accent);
+    }
+    .content ul, .content ol {
+      padding-left: 1.5em;
+      margin-bottom: 1.5em;
+    }
+    .content li {
+      font-size: 0.92rem;
+      margin-bottom: 0.5em;
+      color: #e8e4de;
+    }
+    .content a {
+      color: var(--accent);
+      text-decoration: none;
+      border-bottom: 1px solid rgba(184,154,106,0.3);
+      transition: border-color 0.2s;
+    }
+    .content a:hover { border-color: var(--accent); }
+    .content blockquote {
+      border-left: 2px solid var(--accent);
+      padding: 1em 1.5em;
+      margin: 2em 0;
+      background: rgba(184,154,106,0.05);
+    }
+    .content blockquote p { margin-bottom: 0; }
+    .divider {
+      width: 40px;
+      height: 1px;
+      background: var(--accent);
+      margin: 3em auto;
+    }
+
+    /* ── VIDEO ── */
+    .video-wrap {
+      position: relative;
+      padding-bottom: 56.25%;
+      margin: 2.5em 0;
+      background: #111;
+    }
+    .video-wrap iframe {
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      border: none;
+    }
+    .video-label {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 0.7rem;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 12px;
+    }
+
+    /* ── ITEM CARD ── */
+    .item-block {
+      border: 1px solid var(--line-color);
+      padding: 24px;
+      margin: 1.5em 0;
+    }
+    .item-block p { margin-bottom: 0.5em; }
+    .item-note {
+      font-size: 0.8rem;
+      color: var(--accent);
+      font-style: italic;
+    }
+
+    @media (max-width: 640px) {
+      nav { padding: 16px 20px; }
+      .page-hero { padding: 120px 20px 48px; }
+      .content { padding: 48px 20px 80px; }
+    }
+  </style>
+</head>
+<body>
+<nav>
+  <a href="../" class="nav-logo">ami</a>
+  <a href="../" class="nav-back">Members</a>
+</nav>
+<div id="page">
+  <div class="page-hero">
+    <div class="page-category">Knowhow — Fragrance</div>
+    <h1 class="page-title">Fragrance</h1>
+  </div>
+  <div class="content">
+    
+<p>香りで高級感を纏う。必ずつけましょう。二次流通・メルカリ等で信頼ある人から本物を買いましょう。つける場所は両手首・首・腹の4箇所。</p>
+
+<h2>推奨フレグランス</h2>
+
+<div class="item-block">
+  <p>Saint Laurent リブレ</p>
+  <p class="item-note">持ち運び用 / ボヤさん（9年関係が続いてる子）からの贈り物</p>
+</div>
+<div class="item-block">
+  <p>Aiam アイアム 香水 chapter チャプター65（フローラルムスク）8mL</p>
+  <p class="item-note">¥4,000前後 ・ 持ち運び用</p>
+</div>
+<div class="item-block">
+  <p>Aiam アイアム 香水 chapter チャプター8（フローラルアンバー）8mL</p>
+  <p class="item-note">¥4,000前後 ・ 持ち運び用</p>
+</div>
+<div class="item-block">
+  <p>Her lip to Perfume Oil - PINK SUEDE</p>
+  <p class="item-note">¥6,490前後 ・ 元〇〇46の子が教えてくれた</p>
+</div>
+<div class="item-block">
+  <p>Tom Ford ソレイユ ネージュ オード パルファム スプレィ 50ml</p>
+</div>
+<div class="item-block">
+  <p>BYREDO ブランシュ オード パルファン</p>
+  <p class="item-note">シンプルで清楚な香り</p>
+</div>
+<div class="item-block">
+  <p>FUEGUIA 1833 Agua Magnoliana（アグア マグノリアナ）</p>
+  <p class="item-note">¥58,300前後</p>
+</div>
+<div class="item-block">
+  <p>FUEGUIA 1833 La Cautiva（ラ・カウティーバ）</p>
+  <p class="item-note">¥58,300前後 ・ 現在自分が使用</p>
+</div>
+<div class="item-block">
+  <p>FUEGUIA 1833 Thays（タイス）</p>
+  <p class="item-note">¥57,200前後</p>
+</div>
+
+  </div>
+</div>
+<script>
+  const HASH = 'f9caac86b591b594d0f3bc54111cfa87cc9cb4c2c89f7fbd05bd3a42165dbea0';
+  const COOKIE = 'ami_members_auth';
+  function getCookie(name) {
+    return document.cookie.split(';').map(c => c.trim()).find(c => c.startsWith(name + '='))?.split('=')[1] || '';
+  }
+  function checkAuth() {
+    const val = getCookie(COOKIE);
+    if (val !== HASH) { window.location.replace('../'); return; }
+    document.getElementById('page').style.display = 'block';
+  }
+  checkAuth();
+</script>
+</body>
+</html>

@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="robots" content="noindex, nofollow" />
+  <title>Fashion — ami</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Noto+Serif+JP:wght@200;300;400&display=swap" rel="stylesheet" />
+  
+  <style>
+    :root {
+      --black: #0a0a0a;
+      --white: #fff;
+      --off-white: #f7f5f2;
+      --accent: #b89a6a;
+      --gray: #888;
+      --line-color: #2a2a2a;
+      --line-green: #06c755;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: 'Noto Serif JP', serif;
+      background: var(--black);
+      color: var(--white);
+      min-height: 100vh;
+      line-height: 1.85;
+    }
+    #page { display: none; }
+
+    /* ── NAV ── */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 20px 32px;
+      background: rgba(10,10,10,0.95);
+      backdrop-filter: blur(8px);
+      border-bottom: 1px solid var(--line-color);
+    }
+    .nav-logo {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.4rem;
+      font-weight: 300;
+      letter-spacing: 0.3em;
+      color: var(--white);
+      text-decoration: none;
+    }
+    .nav-back {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 0.7rem;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      color: var(--accent);
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      transition: opacity 0.2s;
+    }
+    .nav-back:hover { opacity: 0.7; }
+    .nav-back::before { content: '←'; }
+
+    /* ── HERO ── */
+    .page-hero {
+      padding: 140px 32px 60px;
+      border-bottom: 1px solid var(--line-color);
+      max-width: 860px;
+      margin: 0 auto;
+    }
+    .page-category {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 0.65rem;
+      letter-spacing: 0.6em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 24px;
+    }
+    .page-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(2.2rem, 5vw, 3.8rem);
+      font-weight: 300;
+      line-height: 1.2;
+      letter-spacing: 0.05em;
+      margin-bottom: 16px;
+    }
+    .page-subtitle {
+      font-size: 0.85rem;
+      color: var(--gray);
+      letter-spacing: 0.05em;
+    }
+
+    /* ── CONTENT ── */
+    .content {
+      max-width: 860px;
+      margin: 0 auto;
+      padding: 60px 32px 120px;
+    }
+    .content p {
+      font-size: 0.95rem;
+      margin-bottom: 1.6em;
+      color: #e8e4de;
+    }
+    .content h2 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.6rem;
+      font-weight: 400;
+      letter-spacing: 0.05em;
+      margin: 2.5em 0 1em;
+      padding-bottom: 0.5em;
+      border-bottom: 1px solid var(--line-color);
+      color: var(--white);
+    }
+    .content h3 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.2rem;
+      font-weight: 400;
+      margin: 2em 0 0.8em;
+      color: var(--accent);
+    }
+    .content ul, .content ol {
+      padding-left: 1.5em;
+      margin-bottom: 1.5em;
+    }
+    .content li {
+      font-size: 0.92rem;
+      margin-bottom: 0.5em;
+      color: #e8e4de;
+    }
+    .content a {
+      color: var(--accent);
+      text-decoration: none;
+      border-bottom: 1px solid rgba(184,154,106,0.3);
+      transition: border-color 0.2s;
+    }
+    .content a:hover { border-color: var(--accent); }
+    .content blockquote {
+      border-left: 2px solid var(--accent);
+      padding: 1em 1.5em;
+      margin: 2em 0;
+      background: rgba(184,154,106,0.05);
+    }
+    .content blockquote p { margin-bottom: 0; }
+    .divider {
+      width: 40px;
+      height: 1px;
+      background: var(--accent);
+      margin: 3em auto;
+    }
+
+    /* ── VIDEO ── */
+    .video-wrap {
+      position: relative;
+      padding-bottom: 56.25%;
+      margin: 2.5em 0;
+      background: #111;
+    }
+    .video-wrap iframe {
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      border: none;
+    }
+    .video-label {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 0.7rem;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 12px;
+    }
+
+    /* ── ITEM CARD ── */
+    .item-block {
+      border: 1px solid var(--line-color);
+      padding: 24px;
+      margin: 1.5em 0;
+    }
+    .item-block p { margin-bottom: 0.5em; }
+    .item-note {
+      font-size: 0.8rem;
+      color: var(--accent);
+      font-style: italic;
+    }
+
+    @media (max-width: 640px) {
+      nav { padding: 16px 20px; }
+      .page-hero { padding: 120px 20px 48px; }
+      .content { padding: 48px 20px 80px; }
+    }
+  </style>
+</head>
+<body>
+<nav>
+  <a href="../" class="nav-logo">ami</a>
+  <a href="../" class="nav-back">Members</a>
+</nav>
+<div id="page">
+  <div class="page-hero">
+    <div class="page-category">Knowhow — Fashion</div>
+    <h1 class="page-title">Fashion</h1>
+  </div>
+  <div class="content">
+    
+<p>現在コンサルティングで使っている最新のアイテム一覧です。下記のアイテムは誰が身につけてもオーラが出るアイテム。ですが、この中にあるアイテムだけでは私を超えることはできません。一緒に見つけたオリジナルのアイテムと組み合わせることで唯一無二になります。なのでオーラを感じたアイテムを見つけたら、amiにたくさん聞いてください。外見追求、服を通じて、沢山思い出を作りましょう。</p>
+
+<h2>アウター / コート</h2>
+<div class="item-block">
+  <p>ユニクロ ウールカシミヤチェスターコート</p>
+  <p class="item-note">ブラック/ベージュ推奨 ・ 身長170→3XL ・ 身長180→4XL</p>
+</div>
+<div class="item-block">
+  <p>H&M ジャケット（ブラック推奨）</p>
+</div>
+<div class="item-block">
+  <p>AliExpress / Qoo10 スパンコールジャケット（J146 2color）</p>
+</div>
+
+<h2>トップス</h2>
+<div class="item-block">
+  <p>GU アゼクルーネックセーター</p>
+  <p class="item-note">身長175→3XL推奨 ・ ブラック/ベージュ推奨</p>
+</div>
+<div class="item-block">
+  <p>ユニクロ 3DスフレヤーンVネックセーター</p>
+  <p class="item-note">身長175→3XL推奨 ・ オフホワイト推奨</p>
+</div>
+<div class="item-block">
+  <p>ユニクロ オーバーサイズスウェットシャツ（男女兼用）</p>
+  <p class="item-note">XL以上推奨 ・ ブラック</p>
+</div>
+<div class="item-block">
+  <p>MUSINSA MOOD INSIDE ヘビーグラウンドモヘアVネックニット</p>
+  <p class="item-note">ブラック/ホワイト推奨</p>
+</div>
+<div class="item-block">
+  <p>GU ケーブルフルジップパーカNT+E</p>
+  <p class="item-note">身長175→2XL推奨 ・ ブラック</p>
+</div>
+<div class="item-block">
+  <p>GU ヘビーウェイトスウェットプルオーバー（ユニセックス）</p>
+  <p class="item-note">L以上推奨 ・ ブラック</p>
+</div>
+<div class="item-block">
+  <p>United Athle 12.7oz ヘヴィーウェイト クルーネック スウェット</p>
+  <p class="item-note">XXL推奨 ・ オフホワイトインナー</p>
+</div>
+
+<h2>インナー / 下着</h2>
+<div class="item-block">
+  <p>ユニクロ 極暖ヒートテックコットンUネックT/8分袖</p>
+</div>
+<div class="item-block">
+  <p>ユニクロ エアリズムタンクトップ</p>
+  <p class="item-note">XL以上推奨</p>
+</div>
+<div class="item-block">
+  <p>GU コットンスムースVネックT+EC</p>
+  <p class="item-note">ブラック/ホワイト 3XL推奨</p>
+</div>
+
+<h2>ボトムス</h2>
+<div class="item-block">
+  <p>GU テーパードトラウザーSW+E / ウォッシャブルテーパードトラウザーSW+EC</p>
+  <p class="item-note">春夏ならこちら</p>
+</div>
+<div class="item-block">
+  <p>ZARA カーゴパンツ</p>
+  <p class="item-note">ブラック推奨</p>
+</div>
+<div class="item-block">
+  <p>MUSINSA DNSR カーペンターパンツ ブラック</p>
+</div>
+<div class="item-block">
+  <p>GU スーパーワイドカーゴパンツ（ユニセックス）</p>
+  <p class="item-note">ブラック推奨</p>
+</div>
+<div class="item-block">
+  <p>MUSINSA WOOALONG Signature relax wide pants - GREY</p>
+  <p class="item-note">秋冬のみ推奨</p>
+</div>
+
+<h2>シューズ</h2>
+<div class="item-block">
+  <p>sacaiブーツ類似 ワークブーツ（エンデヴァイス）</p>
+</div>
+<div class="item-block">
+  <p>saint laurent類似 ヒールブーツ（SHEIN / AliExpress）</p>
+  <p class="item-note">neoインソール3.5 or 5.5cm推奨。2サイズ大きめを推奨。<br>CELINEサイズ参考：43→45(27.5cm) / 41→43(26.5cm)</p>
+</div>
+
+<h2>ネックレス</h2>
+<div class="item-block">
+  <p>ハリーウィンストン類似（SHEIN）</p>
+</div>
+<div class="item-block">
+  <p>Cartierスパルタカス類似 ペーパークリップリンクチェーン 45〜50cm</p>
+  <p class="item-note">Miabella 925スターリングシルバー / 18Kゴールドメッキ / 45cm推奨</p>
+</div>
+
+<h2>リング</h2>
+<p>基本つける場所は人差し指と小指。宝飾店・Tiffany・Cartier等でサイズを測り、それにあったものを。重ね付け推奨。</p>
+<div class="item-block">
+  <p>ショーメ類似（SHEIN）セット売り・シルバー</p>
+  <p class="item-note">3mm → 人差し指推奨 ・ 2mm → 小指推奨</p>
+</div>
+
+<h2>バングル</h2>
+<div class="item-block">
+  <p>SHEIN バングル</p>
+  <p class="item-note">シルバー推奨</p>
+</div>
+
+<h2>バッグ</h2>
+<div class="item-block">
+  <p>ZARA チェーンバッグ</p>
+</div>
+<div class="item-block">
+  <p>GU ワイドボストンバッグ</p>
+  <p class="item-note">ブラック推奨</p>
+</div>
+
+<h2>小物</h2>
+<div class="item-block">
+  <p>フランクリン・プランナー カラーノブレッサII 名刺入れ（ブラック）</p>
+</div>
+<div class="item-block">
+  <p>ユニクロ ヒートテックソックス/パイル</p>
+  <p class="item-note">ブラック推奨。足元まで暖かい</p>
+</div>
+<div class="item-block">
+  <p>H&M ソックス（ブラック推奨）</p>
+  <p class="item-note">毛玉ができにくい</p>
+</div>
+
+  </div>
+</div>
+<script>
+  const HASH = 'f9caac86b591b594d0f3bc54111cfa87cc9cb4c2c89f7fbd05bd3a42165dbea0';
+  const COOKIE = 'ami_members_auth';
+  function getCookie(name) {
+    return document.cookie.split(';').map(c => c.trim()).find(c => c.startsWith(name + '='))?.split('=')[1] || '';
+  }
+  function checkAuth() {
+    const val = getCookie(COOKIE);
+    if (val !== HASH) { window.location.replace('../'); return; }
+    document.getElementById('page').style.display = 'block';
+  }
+  checkAuth();
+</script>
+</body>
+</html>
