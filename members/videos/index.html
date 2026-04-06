@@ -1,0 +1,471 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="robots" content="noindex, nofollow" />
+  <title>Video Library — ami</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Noto+Serif+JP:wght@200;300;400&display=swap" rel="stylesheet" />
+  <style>
+    :root { --black:#0a0a0a; --white:#fff; --accent:#b89a6a; --gray:#888; --line-color:#2a2a2a; }
+    * { margin:0; padding:0; box-sizing:border-box; }
+    body { font-family:'Noto Serif JP',serif; background:var(--black); color:var(--white); min-height:100vh; line-height:1.85; }
+    #page { display:none; }
+    nav { position:fixed; top:0; left:0; right:0; z-index:100; display:flex; align-items:center; justify-content:space-between; padding:20px 32px; background:rgba(10,10,10,0.95); backdrop-filter:blur(8px); border-bottom:1px solid var(--line-color); }
+    .nav-logo { font-family:'Cormorant Garamond',serif; font-size:1.4rem; font-weight:300; letter-spacing:0.3em; color:var(--white); text-decoration:none; }
+    .nav-back { font-family:'Cormorant Garamond',serif; font-size:0.7rem; letter-spacing:0.3em; text-transform:uppercase; color:var(--accent); text-decoration:none; transition:opacity 0.2s; }
+    .nav-back:hover { opacity:0.7; }
+    .nav-back::before { content:'← '; }
+    .page-hero { padding:140px 32px 60px; border-bottom:1px solid var(--line-color); max-width:1100px; margin:0 auto; }
+    .page-category { font-family:'Cormorant Garamond',serif; font-size:0.65rem; letter-spacing:0.6em; text-transform:uppercase; color:var(--accent); margin-bottom:24px; }
+    .page-title { font-family:'Cormorant Garamond',serif; font-size:clamp(2.2rem,5vw,3.8rem); font-weight:300; line-height:1.2; letter-spacing:0.05em; }
+    .page-subtitle { font-family:'Noto Serif JP',serif; font-size:0.88rem; color:var(--gray); margin-top:16px; }
+    .toc-nav { max-width:1100px; margin:0 auto; padding:32px 32px 0; display:flex; flex-wrap:wrap; gap:10px; }
+    .toc-btn { font-family:'Cormorant Garamond',serif; font-size:0.68rem; letter-spacing:0.3em; text-transform:uppercase; color:var(--accent); border:1px solid var(--line-color); padding:8px 18px; text-decoration:none; transition:all 0.2s; }
+    .toc-btn:hover { border-color:var(--accent); }
+    .content { max-width:1100px; margin:0 auto; padding:60px 32px 120px; }
+    .chapter { margin-bottom:80px; }
+    .chapter-header { display:flex; align-items:baseline; gap:20px; margin-bottom:8px; padding-bottom:16px; border-bottom:1px solid var(--line-color); }
+    .chapter-num { font-family:'Cormorant Garamond',serif; font-size:3rem; font-weight:300; color:var(--accent); line-height:1; }
+    .chapter-meta {}
+    .chapter-topic { font-family:'Cormorant Garamond',serif; font-size:0.65rem; letter-spacing:0.5em; text-transform:uppercase; color:var(--gray); }
+    .chapter-title { font-family:'Cormorant Garamond',serif; font-size:1.8rem; font-weight:300; color:var(--white); margin-top:4px; }
+    .chapter-link { font-family:'Cormorant Garamond',serif; font-size:0.65rem; letter-spacing:0.3em; text-transform:uppercase; color:var(--accent); text-decoration:none; margin-left:auto; flex-shrink:0; }
+    .chapter-link:hover { opacity:0.7; }
+    .video-grid { display:grid; grid-template-columns:repeat(auto-fill, minmax(480px, 1fr)); gap:32px; margin-top:28px; }
+    .video-item {}
+    .video-label { font-family:'Cormorant Garamond',serif; font-size:0.65rem; letter-spacing:0.35em; text-transform:uppercase; color:var(--accent); margin-bottom:10px; display:block; }
+    .video-wrap { position:relative; padding-bottom:56.25%; background:#111; }
+    .video-wrap iframe { position:absolute; top:0; left:0; width:100%; height:100%; border:none; }
+    .divider { width:40px; height:1px; background:var(--line-color); margin:60px auto; }
+    @media (max-width:960px) { .video-grid { grid-template-columns:1fr; } }
+    @media (max-width:640px) { nav { padding:16px 20px; } .page-hero { padding:120px 20px 48px; } .content { padding:48px 20px 80px; } .toc-nav { padding:24px 20px 0; } .chapter-header { flex-wrap:wrap; } .chapter-link { margin-left:0; } }
+  </style>
+</head>
+<body>
+<nav>
+  <a href="../" class="nav-logo">ami</a>
+  <a href="../" class="nav-back">Members</a>
+</nav>
+<div id="page">
+  <div class="page-hero">
+    <div class="page-category">Members — Video Library</div>
+    <h1 class="page-title">全動画ライブラリ</h1>
+    <p class="page-subtitle">Communication 全46本の動画をカテゴリ別に収録</p>
+  </div>
+
+  <div class="toc-nav">
+    <a href="#ch00" class="toc-btn">00 全体像</a>
+    <a href="#ch01" class="toc-btn">01 長期関係</a>
+    <a href="#ch03" class="toc-btn">03 Escort</a>
+    <a href="#ch04" class="toc-btn">04 Call</a>
+    <a href="#ch06" class="toc-btn">06 Encounter</a>
+    <a href="#ch07" class="toc-btn">07 リアクション</a>
+    <a href="#ch08" class="toc-btn">08 Episode</a>
+  </div>
+
+  <div class="content">
+
+    <!-- ── CHAPTER 00 ── -->
+    <div class="chapter" id="ch00">
+      <div class="chapter-header">
+        <span class="chapter-num">00</span>
+        <div class="chapter-meta">
+          <div class="chapter-topic">Communication</div>
+          <div class="chapter-title">関係構築の全体像</div>
+        </div>
+        <a href="../communication/00/" class="chapter-link">詳細ページへ →</a>
+      </div>
+      <div class="video-grid">
+        <div class="video-item">
+          <span class="video-label">関係構築の全体像 — akiくんと</span>
+          <div class="video-wrap">
+            <iframe src="https://player.vimeo.com/video/706341952?h=1da25b9c19&badge=0&autopause=0&player_id=0&app_id=58479" allowfullscreen allow="autoplay; fullscreen; picture-in-picture"></iframe>
+          </div>
+        </div>
+        <div class="video-item">
+          <span class="video-label">Essential — 人に愛される方法</span>
+          <div class="video-wrap">
+            <iframe src="https://player.vimeo.com/video/706369146?h=dd596e6622&badge=0&autopause=0&player_id=0&app_id=58479" allowfullscreen allow="autoplay; fullscreen; picture-in-picture"></iframe>
+          </div>
+        </div>
+        <div class="video-item">
+          <span class="video-label">Essential — 人に愛される方法 pro.ver</span>
+          <div class="video-wrap">
+            <iframe src="https://player.vimeo.com/video/706519270?h=776dda7b1b&badge=0&autopause=0&player_id=0&app_id=58479" allowfullscreen allow="autoplay; fullscreen; picture-in-picture"></iframe>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="divider"></div>
+
+    <!-- ── CHAPTER 01 ── -->
+    <div class="chapter" id="ch01">
+      <div class="chapter-header">
+        <span class="chapter-num">01</span>
+        <div class="chapter-meta">
+          <div class="chapter-topic">Communication</div>
+          <div class="chapter-title">長期関係</div>
+        </div>
+        <a href="../communication/01/" class="chapter-link">詳細ページへ →</a>
+      </div>
+      <div class="video-grid">
+        <div class="video-item">
+          <span class="video-label">長期関係 — 潔とのやるべきこと</span>
+          <div class="video-wrap">
+            <iframe src="https://player.vimeo.com/video/1100238814?h=dae9d079e2&badge=0&autopause=0&player_id=0&app_id=58479" allowfullscreen allow="autoplay; fullscreen; picture-in-picture"></iframe>
+          </div>
+        </div>
+        <div class="video-item">
+          <span class="video-label">Essential — 長期関係において必要なこと</span>
+          <div class="video-wrap">
+            <iframe src="https://player.vimeo.com/video/825898248?h=835169ce09&badge=0&autopause=0&player_id=0&app_id=58479" allowfullscreen allow="autoplay; fullscreen; picture-in-picture"></iframe>
+          </div>
+        </div>
+        <div class="video-item">
+          <span class="video-label">コンサルタントテスト — 長期関係で大切なこと</span>
+          <div class="video-wrap">
+            <iframe src="https://player.vimeo.com/video/893220634?h=e709ebf09e&badge=0&autopause=0&player_id=0&app_id=58479" allowfullscreen allow="autoplay; fullscreen; picture-in-picture"></iframe>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="divider"></div>
+
+    <!-- ── CHAPTER 03 ── -->
+    <div class="chapter" id="ch03">
+      <div class="chapter-header">
+        <span class="chapter-num">03</span>
+        <div class="chapter-meta">
+          <div class="chapter-topic">Communication</div>
+          <div class="chapter-title">Escort / デート</div>
+        </div>
+        <a href="../communication/03/" class="chapter-link">詳細ページへ →</a>
+      </div>
+      <div class="video-grid">
+        <div class="video-item">
+          <span class="video-label">Escort — Vol.1</span>
+          <div class="video-wrap">
+            <iframe src="https://player.vimeo.com/video/707213352?h=30e8775fc6&badge=0&autopause=0&player_id=0&app_id=58479" allowfullscreen allow="autoplay; fullscreen; picture-in-picture"></iframe>
+          </div>
+        </div>
+        <div class="video-item">
+          <span class="video-label">Escort — Vol.2</span>
+          <div class="video-wrap">
+            <iframe src="https://player.vimeo.com/video/707265072?h=0c1f4b7409&badge=0&autopause=0&player_id=0&app_id=58479" allowfullscreen allow="autoplay; fullscreen; picture-in-picture"></iframe>
+          </div>
+        </div>
+        <div class="video-item">
+          <span class="video-label">Escort — Vol.3</span>
+          <div class="video-wrap">
+            <iframe src="https://player.vimeo.com/video/707304814?h=14d86cddea&badge=0&autopause=0&player_id=0&app_id=58479" allowfullscreen allow="autoplay; fullscreen; picture-in-picture"></iframe>
+          </div>
+        </div>
+        <div class="video-item">
+          <span class="video-label">Escort — Vol.4</span>
+          <div class="video-wrap">
+            <iframe src="https://player.vimeo.com/video/707190882?h=8c4a9d91d4&badge=0&autopause=0&player_id=0&app_id=58479" allowfullscreen allow="autoplay; fullscreen; picture-in-picture"></iframe>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="divider"></div>
+
+    <!-- ── CHAPTER 04 ── -->
+    <div class="chapter" id="ch04">
+      <div class="chapter-header">
+        <span class="chapter-num">04</span>
+        <div class="chapter-meta">
+          <div class="chapter-topic">Communication</div>
+          <div class="chapter-title">Call / 電話</div>
+        </div>
+        <a href="../communication/04/" class="chapter-link">詳細ページへ →</a>
+      </div>
+      <div class="video-grid">
+        <div class="video-item">
+          <span class="video-label">深夜ブチギレ — Call</span>
+          <div class="video-wrap">
+            <iframe src="https://player.vimeo.com/video/1176225603?h=5b57a2de8c&badge=0&autopause=0&player_id=0&app_id=58479" allowfullscreen allow="autoplay; fullscreen; picture-in-picture"></iframe>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="divider"></div>
+
+    <!-- ── CHAPTER 06 ── -->
+    <div class="chapter" id="ch06">
+      <div class="chapter-header">
+        <span class="chapter-num">06</span>
+        <div class="chapter-meta">
+          <div class="chapter-topic">Communication</div>
+          <div class="chapter-title">Encounter / 出会い</div>
+        </div>
+        <a href="../communication/06/" class="chapter-link">詳細ページへ →</a>
+      </div>
+      <div class="video-grid">
+        <div class="video-item">
+          <span class="video-label">Encounter — Vol.1</span>
+          <div class="video-wrap">
+            <iframe src="https://player.vimeo.com/video/1091367039?h=562bc30561&badge=0&autopause=0&player_id=0&app_id=58479" allowfullscreen allow="autoplay; fullscreen; picture-in-picture"></iframe>
+          </div>
+        </div>
+        <div class="video-item">
+          <span class="video-label">Encounter — Vol.2</span>
+          <div class="video-wrap">
+            <iframe src="https://player.vimeo.com/video/1082085004?h=37bd08d66e&badge=0&autopause=0&player_id=0&app_id=58479" allowfullscreen allow="autoplay; fullscreen; picture-in-picture"></iframe>
+          </div>
+        </div>
+        <div class="video-item">
+          <span class="video-label">Encounter — Vol.3</span>
+          <div class="video-wrap">
+            <iframe src="https://player.vimeo.com/video/971440869?h=24c9200ae5&badge=0&autopause=0&player_id=0&app_id=58479" allowfullscreen allow="autoplay; fullscreen; picture-in-picture"></iframe>
+          </div>
+        </div>
+        <div class="video-item">
+          <span class="video-label">Encounter — Vol.4</span>
+          <div class="video-wrap">
+            <iframe src="https://player.vimeo.com/video/971490828?h=be65ec29fa&badge=0&autopause=0&player_id=0&app_id=58479" allowfullscreen allow="autoplay; fullscreen; picture-in-picture"></iframe>
+          </div>
+        </div>
+        <div class="video-item">
+          <span class="video-label">Encounter — Vol.5</span>
+          <div class="video-wrap">
+            <iframe src="https://player.vimeo.com/video/757596764?h=0c4de1aa16&badge=0&autopause=0&player_id=0&app_id=58479" allowfullscreen allow="autoplay; fullscreen; picture-in-picture"></iframe>
+          </div>
+        </div>
+        <div class="video-item">
+          <span class="video-label">Encounter — Vol.6</span>
+          <div class="video-wrap">
+            <iframe src="https://player.vimeo.com/video/758206539?h=867fbe5691&badge=0&autopause=0&player_id=0&app_id=58479" allowfullscreen allow="autoplay; fullscreen; picture-in-picture"></iframe>
+          </div>
+        </div>
+        <div class="video-item">
+          <span class="video-label">Encounter — Vol.7</span>
+          <div class="video-wrap">
+            <iframe src="https://player.vimeo.com/video/758310935?h=2dbb05a70e&badge=0&autopause=0&player_id=0&app_id=58479" allowfullscreen allow="autoplay; fullscreen; picture-in-picture"></iframe>
+          </div>
+        </div>
+        <div class="video-item">
+          <span class="video-label">Encounter — Vol.8</span>
+          <div class="video-wrap">
+            <iframe src="https://player.vimeo.com/video/732788764?h=43c77c4808&badge=0&autopause=0&player_id=0&app_id=58479" allowfullscreen allow="autoplay; fullscreen; picture-in-picture"></iframe>
+          </div>
+        </div>
+        <div class="video-item">
+          <span class="video-label">Encounter — Vol.9</span>
+          <div class="video-wrap">
+            <iframe src="https://player.vimeo.com/video/732987826?h=06653bb901&badge=0&autopause=0&player_id=0&app_id=58479" allowfullscreen allow="autoplay; fullscreen; picture-in-picture"></iframe>
+          </div>
+        </div>
+        <div class="video-item">
+          <span class="video-label">Encounter — Vol.10</span>
+          <div class="video-wrap">
+            <iframe src="https://player.vimeo.com/video/733717852?h=edf5f72fa0&badge=0&autopause=0&player_id=0&app_id=58479" allowfullscreen allow="autoplay; fullscreen; picture-in-picture"></iframe>
+          </div>
+        </div>
+        <div class="video-item">
+          <span class="video-label">Encounter — Vol.11</span>
+          <div class="video-wrap">
+            <iframe src="https://player.vimeo.com/video/734992702?h=9fea4f111d&badge=0&autopause=0&player_id=0&app_id=58479" allowfullscreen allow="autoplay; fullscreen; picture-in-picture"></iframe>
+          </div>
+        </div>
+        <div class="video-item">
+          <span class="video-label">Encounter — Vol.12</span>
+          <div class="video-wrap">
+            <iframe src="https://player.vimeo.com/video/734990442?h=b8ca8e1d20&badge=0&autopause=0&player_id=0&app_id=58479" allowfullscreen allow="autoplay; fullscreen; picture-in-picture"></iframe>
+          </div>
+        </div>
+        <div class="video-item">
+          <span class="video-label">Encounter — Vol.13</span>
+          <div class="video-wrap">
+            <iframe src="https://player.vimeo.com/video/833212192?h=74369f43fc&badge=0&autopause=0&player_id=0&app_id=58479" allowfullscreen allow="autoplay; fullscreen; picture-in-picture"></iframe>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="divider"></div>
+
+    <!-- ── CHAPTER 07 ── -->
+    <div class="chapter" id="ch07">
+      <div class="chapter-header">
+        <span class="chapter-num">07</span>
+        <div class="chapter-meta">
+          <div class="chapter-topic">Communication</div>
+          <div class="chapter-title">リアクション</div>
+        </div>
+        <a href="../communication/07/" class="chapter-link">詳細ページへ →</a>
+      </div>
+      <div class="video-grid">
+        <div class="video-item">
+          <span class="video-label">リアルタイム電話添削 Vol.1 — NG例</span>
+          <div class="video-wrap">
+            <iframe src="https://player.vimeo.com/video/760565184?h=bd90a8a986&badge=0&autopause=0&player_id=0&app_id=58479" allowfullscreen allow="autoplay; fullscreen; picture-in-picture"></iframe>
+          </div>
+        </div>
+        <div class="video-item">
+          <span class="video-label">リアルタイム電話添削 Vol.2 — グループ指導</span>
+          <div class="video-wrap">
+            <iframe src="https://player.vimeo.com/video/815643120?h=731c2ebd93&badge=0&autopause=0&player_id=0&app_id=58479" allowfullscreen allow="autoplay; fullscreen; picture-in-picture"></iframe>
+          </div>
+        </div>
+        <div class="video-item">
+          <span class="video-label">Essential — ゴールに到達できるように・真のオーバーリアクション</span>
+          <div class="video-wrap">
+            <iframe src="https://player.vimeo.com/video/1013960125?h=bb8f2062ac&badge=0&autopause=0&player_id=0&app_id=58479" allowfullscreen allow="autoplay; fullscreen; picture-in-picture"></iframe>
+          </div>
+        </div>
+        <div class="video-item">
+          <span class="video-label">神回 — 潔コンサルzoom 3</span>
+          <div class="video-wrap">
+            <iframe src="https://player.vimeo.com/video/1126241774?h=7e5e069b2a&badge=0&autopause=0&player_id=0&app_id=58479" allowfullscreen allow="autoplay; fullscreen; picture-in-picture"></iframe>
+          </div>
+        </div>
+        <div class="video-item">
+          <span class="video-label">Essential実践編 — リアクションの仕方</span>
+          <div class="video-wrap">
+            <iframe src="https://player.vimeo.com/video/833720328?h=f1dc775aa2&badge=0&autopause=0&player_id=0&app_id=58479" allowfullscreen allow="autoplay; fullscreen; picture-in-picture"></iframe>
+          </div>
+        </div>
+        <div class="video-item">
+          <span class="video-label">リアクション応用</span>
+          <div class="video-wrap">
+            <iframe src="https://player.vimeo.com/video/834075199?h=4934b13bf1&badge=0&autopause=0&player_id=0&app_id=58479" allowfullscreen allow="autoplay; fullscreen; picture-in-picture"></iframe>
+          </div>
+        </div>
+        <div class="video-item">
+          <span class="video-label">エピソードトーク壁打ち — 7層のトークサンドイッチ</span>
+          <div class="video-wrap">
+            <iframe src="https://player.vimeo.com/video/1098937893?h=36a37a65b8&badge=0&autopause=0&player_id=0&app_id=58479" allowfullscreen allow="autoplay; fullscreen; picture-in-picture"></iframe>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="divider"></div>
+
+    <!-- ── CHAPTER 08 ── -->
+    <div class="chapter" id="ch08">
+      <div class="chapter-header">
+        <span class="chapter-num">08</span>
+        <div class="chapter-meta">
+          <div class="chapter-topic">Communication</div>
+          <div class="chapter-title">Episode Talk</div>
+        </div>
+        <a href="../communication/08/" class="chapter-link">詳細ページへ →</a>
+      </div>
+      <div class="video-grid">
+        <div class="video-item">
+          <span class="video-label">Episode Talk — Vol.1</span>
+          <div class="video-wrap">
+            <iframe src="https://player.vimeo.com/video/910838651?h=6777c084f2&badge=0&autopause=0&player_id=0&app_id=58479" allowfullscreen allow="autoplay; fullscreen; picture-in-picture"></iframe>
+          </div>
+        </div>
+        <div class="video-item">
+          <span class="video-label">Episode Talk — Vol.2</span>
+          <div class="video-wrap">
+            <iframe src="https://player.vimeo.com/video/915143002?h=34c4a33ba0&badge=0&autopause=0&player_id=0&app_id=58479" allowfullscreen allow="autoplay; fullscreen; picture-in-picture"></iframe>
+          </div>
+        </div>
+        <div class="video-item">
+          <span class="video-label">Episode Talk — Vol.3</span>
+          <div class="video-wrap">
+            <iframe src="https://player.vimeo.com/video/912258728?h=0406abcc20&badge=0&autopause=0&player_id=0&app_id=58479" allowfullscreen allow="autoplay; fullscreen; picture-in-picture"></iframe>
+          </div>
+        </div>
+        <div class="video-item">
+          <span class="video-label">Episode Talk — Vol.4</span>
+          <div class="video-wrap">
+            <iframe src="https://player.vimeo.com/video/912291395?h=8319e23642&badge=0&autopause=0&player_id=0&app_id=58479" allowfullscreen allow="autoplay; fullscreen; picture-in-picture"></iframe>
+          </div>
+        </div>
+        <div class="video-item">
+          <span class="video-label">Episode Talk — Vol.5</span>
+          <div class="video-wrap">
+            <iframe src="https://player.vimeo.com/video/906257492?h=579df8ed02&badge=0&autopause=0&player_id=0&app_id=58479" allowfullscreen allow="autoplay; fullscreen; picture-in-picture"></iframe>
+          </div>
+        </div>
+        <div class="video-item">
+          <span class="video-label">Episode Talk — Vol.6</span>
+          <div class="video-wrap">
+            <iframe src="https://player.vimeo.com/video/825723685?h=686b5ba956&badge=0&autopause=0&player_id=0&app_id=58479" allowfullscreen allow="autoplay; fullscreen; picture-in-picture"></iframe>
+          </div>
+        </div>
+        <div class="video-item">
+          <span class="video-label">Episode Talk — Vol.7</span>
+          <div class="video-wrap">
+            <iframe src="https://player.vimeo.com/video/915157188?h=0b0e7710bc&badge=0&autopause=0&player_id=0&app_id=58479" allowfullscreen allow="autoplay; fullscreen; picture-in-picture"></iframe>
+          </div>
+        </div>
+        <div class="video-item">
+          <span class="video-label">Episode Talk — Vol.8</span>
+          <div class="video-wrap">
+            <iframe src="https://player.vimeo.com/video/760610566?h=9cc8cf4f03&badge=0&autopause=0&player_id=0&app_id=58479" allowfullscreen allow="autoplay; fullscreen; picture-in-picture"></iframe>
+          </div>
+        </div>
+        <div class="video-item">
+          <span class="video-label">Episode Talk — Vol.9</span>
+          <div class="video-wrap">
+            <iframe src="https://player.vimeo.com/video/762313002?h=dc4c72866c&badge=0&autopause=0&player_id=0&app_id=58479" allowfullscreen allow="autoplay; fullscreen; picture-in-picture"></iframe>
+          </div>
+        </div>
+        <div class="video-item">
+          <span class="video-label">Episode Talk — Vol.10</span>
+          <div class="video-wrap">
+            <iframe src="https://player.vimeo.com/video/762313312?h=8ac0aa7ae5&badge=0&autopause=0&player_id=0&app_id=58479" allowfullscreen allow="autoplay; fullscreen; picture-in-picture"></iframe>
+          </div>
+        </div>
+        <div class="video-item">
+          <span class="video-label">Episode Talk — Vol.11</span>
+          <div class="video-wrap">
+            <iframe src="https://player.vimeo.com/video/964587598?h=70da24e436&badge=0&autopause=0&player_id=0&app_id=58479" allowfullscreen allow="autoplay; fullscreen; picture-in-picture"></iframe>
+          </div>
+        </div>
+        <div class="video-item">
+          <span class="video-label">Episode Talk — Vol.12</span>
+          <div class="video-wrap">
+            <iframe src="https://player.vimeo.com/video/964557019?h=c975436d0c&badge=0&autopause=0&player_id=0&app_id=58479" allowfullscreen allow="autoplay; fullscreen; picture-in-picture"></iframe>
+          </div>
+        </div>
+        <div class="video-item">
+          <span class="video-label">Episode Talk — Vol.13</span>
+          <div class="video-wrap">
+            <iframe src="https://player.vimeo.com/video/964566007?h=a558c93dc1&badge=0&autopause=0&player_id=0&app_id=58479" allowfullscreen allow="autoplay; fullscreen; picture-in-picture"></iframe>
+          </div>
+        </div>
+        <div class="video-item">
+          <span class="video-label">Episode Talk — Vol.14</span>
+          <div class="video-wrap">
+            <iframe src="https://player.vimeo.com/video/967236889?h=3ac740a0f6&badge=0&autopause=0&player_id=0&app_id=58479" allowfullscreen allow="autoplay; fullscreen; picture-in-picture"></iframe>
+          </div>
+        </div>
+        <div class="video-item">
+          <span class="video-label">Episode Talk — Vol.15</span>
+          <div class="video-wrap">
+            <iframe src="https://player.vimeo.com/video/882802058?h=a8441cae7e&badge=0&autopause=0&player_id=0&app_id=58479" allowfullscreen allow="autoplay; fullscreen; picture-in-picture"></iframe>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+<script>
+  const HASH='f9caac86b591b594d0f3bc54111cfa87cc9cb4c2c89f7fbd05bd3a42165dbea0';
+  const COOKIE='ami_members_auth';
+  function getCookie(n){return document.cookie.split(';').map(c=>c.trim()).find(c=>c.startsWith(n+'='))?.split('=')[1]||'';}
+  function checkAuth(){
+    const val=getCookie(COOKIE);
+    if(val!==HASH){window.location.replace('../');return;}
+    document.getElementById('page').style.display='block';
+  }
+  checkAuth();
+</script>
+</body>
+</html>
