@@ -2072,7 +2072,7 @@
       <div class="m-tabs">
         <button class="m-tab active" data-panel="comm">Communication</button>
         <button class="m-tab" data-panel="knowhub">Knowledge Hub</button>
-        <button class="m-tab" data-panel="videos">Videos</button>
+        <button class="m-tab" data-panel="videos" data-href="members/videos/">Videos</button>
         <button class="m-tab" data-panel="resources">Resources</button>
       </div>
 
@@ -2186,29 +2186,8 @@
         </div>
       </div>
 
-      <!-- ═══ Videos Panel ═══ -->
-      <div class="m-panel" id="panel-videos">
-        <h3 class="m-panel-title">動画で学ぶ、amiのメソッド</h3>
-        <p class="m-panel-desc">コンサルで実際に使っているノウハウを動画で公開。カテゴリ別に整理された全動画ライブラリ。</p>
-
-        <div class="m-video-cat-label">Mindset</div>
-        <div class="m-video-grid">
-          <div class="m-video-item">
-            <div class="m-video-wrap">
-              <iframe src="https://player.vimeo.com/video/1176225603?h=5b57a2de8c&badge=0&autopause=0&player_id=0&app_id=58479"
-                allow="autoplay; fullscreen; picture-in-picture" loading="lazy"
-                title="深夜ブチギレ｜準備しない人お金・時間・信頼全て溶かしすぎ"></iframe>
-            </div>
-            <p class="m-video-label">深夜ブチギレ｜準備しない人お金・時間・信頼全て溶かしすぎ</p>
-          </div>
-        </div>
-
-        <div style="margin-top:40px;">
-          <a href="members/videos/" class="m-hub-card" style="justify-content:center;">
-            <span class="m-hub-arrow">全46本の動画ライブラリを見る →</span>
-          </a>
-        </div>
-      </div>
+      <!-- ═══ Videos Panel (別階層に遷移するためパネル不要 / フォールバック用に残す) ═══ -->
+      <div class="m-panel" id="panel-videos" style="display:none;"></div>
 
       <!-- ═══ Resources Panel ═══ -->
       <div class="m-panel" id="panel-resources">
@@ -2456,6 +2435,11 @@
       var mTabs = document.querySelectorAll('.m-tab');
       mTabs.forEach(function(tab) {
         tab.addEventListener('click', function() {
+          // Videos tab → 別ページへ遷移
+          if (tab.dataset.href) {
+            window.location.href = tab.dataset.href;
+            return;
+          }
           mTabs.forEach(function(t) { t.classList.remove('active'); });
           tab.classList.add('active');
           document.querySelectorAll('.m-panel').forEach(function(p) { p.classList.remove('active'); });
