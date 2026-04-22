@@ -1002,101 +1002,7 @@
       border: none;
     }
 
-    /* ── Knowledge Hub ── */
-    #knowhub {
-      background: var(--off-white);
-    }
-
-    .knowhub-grid {
-      display: grid;
-      grid-template-columns: repeat(5, 1fr);
-      gap: 16px;
-      margin-top: 48px;
-    }
-
-    .knowhub-card {
-      background: var(--white);
-      border: 1px solid var(--line-color);
-      border-radius: 4px;
-      padding: 32px 20px 28px;
-      text-decoration: none;
-      color: var(--black);
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      text-align: center;
-      gap: 12px;
-      transition: transform 0.25s, box-shadow 0.25s, border-color 0.25s;
-      position: relative;
-      overflow: hidden;
-    }
-
-    .knowhub-card::before {
-      content: '';
-      position: absolute;
-      bottom: 0; left: 0; right: 0;
-      height: 3px;
-      background: var(--accent);
-      transform: scaleX(0);
-      transform-origin: left;
-      transition: transform 0.3s;
-    }
-
-    .knowhub-card:hover {
-      transform: translateY(-4px);
-      box-shadow: 0 12px 32px rgba(0,0,0,0.08);
-      border-color: var(--accent);
-    }
-
-    .knowhub-card:hover::before {
-      transform: scaleX(1);
-    }
-
-    .knowhub-icon {
-      font-size: 2rem;
-      line-height: 1;
-    }
-
-    .knowhub-en {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 0.6rem;
-      letter-spacing: 0.4em;
-      text-transform: uppercase;
-      color: var(--accent);
-    }
-
-    .knowhub-title {
-      font-family: 'Noto Serif JP', serif;
-      font-size: 1rem;
-      font-weight: 400;
-      letter-spacing: 0.12em;
-    }
-
-    .knowhub-desc {
-      font-size: 0.68rem;
-      line-height: 1.9;
-      letter-spacing: 0.06em;
-      color: var(--gray);
-      flex: 1;
-    }
-
-    .knowhub-btn {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 0.65rem;
-      letter-spacing: 0.35em;
-      text-transform: uppercase;
-      color: var(--black);
-      border: 1px solid var(--black);
-      padding: 8px 20px;
-      border-radius: 2px;
-      margin-top: 4px;
-      transition: background 0.2s, color 0.2s;
-    }
-
-    .knowhub-card:hover .knowhub-btn {
-      background: var(--black);
-      color: var(--white);
-    }
+    /* knowhub removed — content moved to #members */
 
     /* ════════════════════════════
        SNS
@@ -1311,6 +1217,112 @@
       padding: 3px 10px;
     }
 
+    .m-category-label {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 0.62rem;
+      letter-spacing: 0.5em;
+      text-transform: uppercase;
+      color: rgba(184,154,130,0.6);
+      margin-top: 48px;
+      margin-bottom: 4px;
+      padding-bottom: 12px;
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+    }
+    .m-category-label:first-child { margin-top: 0; }
+
+    .m-category-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.3rem;
+      font-weight: 300;
+      letter-spacing: 0.1em;
+      color: #fff;
+      margin-bottom: 20px;
+    }
+
+    .m-hub-card {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      padding: 20px 24px;
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(255,255,255,0.08);
+      text-decoration: none;
+      transition: background 0.3s, border-color 0.3s;
+    }
+    .m-hub-card:hover {
+      background: rgba(255,255,255,0.08);
+      border-color: rgba(184,154,130,0.3);
+    }
+    .m-hub-icon { font-size: 1.4rem; }
+    .m-hub-info { flex: 1; text-align: left; }
+    .m-hub-name {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 0.95rem;
+      letter-spacing: 0.15em;
+      color: #fff;
+    }
+    .m-hub-sub {
+      font-size: 0.68rem;
+      color: rgba(255,255,255,0.4);
+      margin-top: 4px;
+    }
+    .m-hub-arrow {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 0.75rem;
+      letter-spacing: 0.2em;
+      color: var(--accent);
+    }
+
+    .m-hub-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+      gap: 12px;
+    }
+
+    .m-item-guide-link {
+      display: block;
+      padding: 16px 24px;
+      background: rgba(184,154,130,0.08);
+      border: 1px solid rgba(184,154,130,0.2);
+      text-decoration: none;
+      text-align: center;
+      margin-bottom: 16px;
+      transition: background 0.3s;
+    }
+    .m-item-guide-link:hover { background: rgba(184,154,130,0.15); }
+    .m-item-guide-link span {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 0.75rem;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      color: var(--accent);
+    }
+
+    .m-video-inline {
+      margin-top: 16px;
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 16px;
+    }
+    .m-video-inline-wrap {
+      position: relative;
+      padding-bottom: 56.25%;
+      background: rgba(255,255,255,0.03);
+      border: 1px solid rgba(255,255,255,0.08);
+    }
+    .m-video-inline-wrap iframe {
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%;
+      height: 100%;
+      border: 0;
+    }
+    .m-video-inline-label {
+      font-size: 0.68rem;
+      color: rgba(255,255,255,0.4);
+      margin-top: 8px;
+    }
+
     /* ════════════════════════════
        FOOTER
     ════════════════════════════ */
@@ -1435,8 +1447,7 @@
       .gallery-item:nth-child(6) { grid-column: auto; aspect-ratio: 3/4; }
 
       .youtube-grid { grid-template-columns: 1fr; }
-      .knowhub-grid { grid-template-columns: repeat(2, 1fr); gap: 12px; }
-      .knowhub-card:nth-child(5) { grid-column: 1 / -1; max-width: 260px; margin: 0 auto; }
+      /* knowhub responsive removed */
 
       .sns-grid { grid-template-columns: 1fr; gap: 12px; }
 
@@ -1492,7 +1503,7 @@
       <li><a href="#results" data-section="results">実績</a></li>
       <li><a href="#services" data-section="services">Services</a></li>
       <li><a href="#gallery" data-section="gallery">Gallery</a></li>
-      <li><a href="#knowhub" data-section="knowhub">ノウハウ</a></li>
+      <li><a href="#members" data-section="members">メンバー</a></li>
       <li><a href="#sns" data-section="sns">SNS</a></li>
     </ul>
     <a href="https://t.co/bfM0wqM7fj" target="_blank" rel="noopener" class="nav-line-btn">無料カウンセリング</a>
@@ -1507,7 +1518,7 @@
     <a href="#results" class="drawer-link">実績</a>
     <a href="#services" class="drawer-link">Services</a>
     <a href="#gallery" class="drawer-link">Gallery</a>
-    <a href="#knowhub" class="drawer-link">ノウハウ</a>
+    <a href="#members" class="drawer-link">メンバー</a>
     <a href="#sns" class="drawer-link">SNS</a>
     <a href="https://t.co/bfM0wqM7fj" target="_blank" rel="noopener" class="drawer-link" style="color:var(--line-green)">LINE 無料カウンセリング</a>
   </div>
@@ -1883,52 +1894,6 @@
     <button class="lightbox-nav lightbox-next" id="lbNext">›</button>
   </div>
 
-  <!-- KNOWLEDGE HUB -->
-  <section id="knowhub">
-    <span class="section-label fade-in">Knowledge Hub</span>
-    <h2 class="section-title fade-in">amiのノウハウ、<br><em>全部公開。</em></h2>
-    <div class="divider fade-in"></div>
-    <p class="section-lead fade-in">ファッション・ヘア・スキンケア・メイク・フレグランス。外見を変える5つの領域のノウハウを、カテゴリ別にまとめました。</p>
-
-    <div class="knowhub-grid">
-      <a href="members/" class="knowhub-card fade-in">
-        <span class="knowhub-icon">👔</span>
-        <span class="knowhub-en">Fashion</span>
-        <span class="knowhub-title">ファッション</span>
-        <p class="knowhub-desc">アウター・トップス・ボトムス・シューズ・アクセサリー。誰でもオーラが出るアイテムを全公開。</p>
-        <span class="knowhub-btn">🔒 Members Only</span>
-      </a>
-      <a href="members/" class="knowhub-card fade-in" style="transition-delay:0.08s">
-        <span class="knowhub-icon">✂️</span>
-        <span class="knowhub-en">Hair</span>
-        <span class="knowhub-title">ヘア</span>
-        <p class="knowhub-desc">髪型・ヘアケア・スタイリング。外見偏差値を最も手軽に上げられる領域のガイド。</p>
-        <span class="knowhub-btn">🔒 Members Only</span>
-      </a>
-      <a href="members/" class="knowhub-card fade-in" style="transition-delay:0.16s">
-        <span class="knowhub-icon">💧</span>
-        <span class="knowhub-en">Skin Care</span>
-        <span class="knowhub-title">スキンケア</span>
-        <p class="knowhub-desc">肌質改善・クレンジング・保湿。男性が最も差をつけられる、見た目の土台。</p>
-        <span class="knowhub-btn">🔒 Members Only</span>
-      </a>
-      <a href="members/" class="knowhub-card fade-in" style="transition-delay:0.24s">
-        <span class="knowhub-icon">🪞</span>
-        <span class="knowhub-en">Make Up</span>
-        <span class="knowhub-title">メイク</span>
-        <p class="knowhub-desc">BBクリーム・眉・リップ。バレないナチュラルメイクで清潔感を底上げする方法。</p>
-        <span class="knowhub-btn">🔒 Members Only</span>
-      </a>
-      <a href="members/" class="knowhub-card fade-in" style="transition-delay:0.32s">
-        <span class="knowhub-icon">🌸</span>
-        <span class="knowhub-en">Fragrance</span>
-        <span class="knowhub-title">フレグランス</span>
-        <p class="knowhub-desc">シーン・季節別の香水選び。第一印象を決定する、見えないファッション。</p>
-        <span class="knowhub-btn">🔒 Members Only</span>
-      </a>
-    </div>
-  </section>
-
   <!-- VIDEO -->
   <section id="youtube">
     <span class="section-label fade-in">Video</span>
@@ -1997,86 +1962,169 @@
 
     <!-- Content (shown after auth) -->
     <div class="members-content" id="membersContent">
-      <div class="m-topic-grid">
 
+      <!-- ─── Communication ─── -->
+      <div class="m-category-label">Communication</div>
+      <div class="m-category-title">コミュニケーション 11のテーマ</div>
+      <div class="m-topic-grid">
         <a href="members/communication/00/" class="m-topic-card">
           <div class="m-topic-num">Topic 00</div>
           <div class="m-topic-title">Communication</div>
-          <p class="m-topic-desc">関係構築の全体像。このシリーズを読む前に必ずここから始める。</p>
+          <p class="m-topic-desc">関係構築の全体像。必ずここから始める。</p>
           <span class="m-topic-arrow">Read →</span>
         </a>
-
         <a href="members/communication/01/" class="m-topic-card">
           <div class="m-topic-num">Topic 01</div>
           <div class="m-topic-title">長期関係</div>
           <p class="m-topic-desc">メッセージ・電話・デートの積み重ねで関係を続ける方法。</p>
           <span class="m-topic-arrow">Read →</span>
         </a>
-
         <div class="m-topic-card soon">
           <div class="m-topic-num">Topic 02</div>
           <div class="m-topic-title">告白の仕方・タイミング</div>
-          <p class="m-topic-desc">コンテンツ準備中です。</p>
+          <p class="m-topic-desc">準備中</p>
           <span class="m-topic-tag">Coming Soon</span>
         </div>
-
         <a href="members/communication/03/" class="m-topic-card">
           <div class="m-topic-num">Topic 03</div>
           <div class="m-topic-title">Escort</div>
-          <p class="m-topic-desc">デートのエスコート術。場所選び・動き方・気遣いの全て。</p>
+          <p class="m-topic-desc">デートのエスコート術。場所選び・動き方・気遣い。</p>
           <span class="m-topic-arrow">Read →</span>
         </a>
-
         <a href="members/communication/04/" class="m-topic-card">
           <div class="m-topic-num">Topic 04</div>
           <div class="m-topic-title">Call</div>
           <p class="m-topic-desc">電話での話し方・タイミング・頻度。声だけで印象を作る。</p>
           <span class="m-topic-arrow">Read →</span>
         </a>
-
         <a href="members/communication/05/" class="m-topic-card">
           <div class="m-topic-num">Topic 05</div>
           <div class="m-topic-title">Message</div>
           <p class="m-topic-desc">テキストでの好感度を上げる文章術。返信率・テンション管理。</p>
           <span class="m-topic-arrow">Read →</span>
         </a>
-
         <a href="members/communication/06/" class="m-topic-card">
           <div class="m-topic-num">Topic 06</div>
           <div class="m-topic-title">Encounter</div>
           <p class="m-topic-desc">出会いの作り方・マッチングアプリ攻略・路上での出会い方。</p>
           <span class="m-topic-arrow">Read →</span>
         </a>
-
         <a href="members/communication/07/" class="m-topic-card">
           <div class="m-topic-num">Topic 07</div>
           <div class="m-topic-title">リアクション</div>
           <p class="m-topic-desc">相手の話への反応の仕方。感情を引き出し、会話を深める。</p>
           <span class="m-topic-arrow">Read →</span>
         </a>
-
         <a href="members/communication/08/" class="m-topic-card">
           <div class="m-topic-num">Topic 08</div>
           <div class="m-topic-title">Episode</div>
           <p class="m-topic-desc">エピソードトークで人を感動させる。実践動画15本収録。</p>
           <span class="m-topic-arrow">Read →</span>
         </a>
-
         <div class="m-topic-card soon">
           <div class="m-topic-num">Topic 09</div>
           <div class="m-topic-title">話す力</div>
-          <p class="m-topic-desc">コンテンツ準備中です。</p>
+          <p class="m-topic-desc">準備中</p>
           <span class="m-topic-tag">Coming Soon</span>
         </div>
-
         <div class="m-topic-card soon">
           <div class="m-topic-num">Topic 10</div>
           <div class="m-topic-title">聞く力</div>
-          <p class="m-topic-desc">コンテンツ準備中です。</p>
+          <p class="m-topic-desc">準備中</p>
           <span class="m-topic-tag">Coming Soon</span>
         </div>
-
       </div>
+
+      <!-- ─── Knowledge Hub ─── -->
+      <div class="m-category-label">Knowledge Hub</div>
+      <div class="m-category-title">外見を変える5つの領域</div>
+      <a href="members/item-guide/" class="m-item-guide-link">
+        <span>Must Read First — アイテムガイド総論</span>
+      </a>
+      <div class="m-hub-grid">
+        <a href="members/fashion/" class="m-hub-card">
+          <span class="m-hub-icon">👔</span>
+          <div class="m-hub-info">
+            <div class="m-hub-name">Fashion</div>
+            <div class="m-hub-sub">アウター・トップス・ボトムス・シューズ・アクセサリー</div>
+          </div>
+          <span class="m-hub-arrow">→</span>
+        </a>
+        <a href="members/hair/" class="m-hub-card">
+          <span class="m-hub-icon">✂️</span>
+          <div class="m-hub-info">
+            <div class="m-hub-name">Hair</div>
+            <div class="m-hub-sub">髪型・ヘアケア・スタイリング</div>
+          </div>
+          <span class="m-hub-arrow">→</span>
+        </a>
+        <a href="members/skincare/" class="m-hub-card">
+          <span class="m-hub-icon">💧</span>
+          <div class="m-hub-info">
+            <div class="m-hub-name">Skin Care</div>
+            <div class="m-hub-sub">肌質改善・クレンジング・保湿</div>
+          </div>
+          <span class="m-hub-arrow">→</span>
+        </a>
+        <a href="members/makeup/" class="m-hub-card">
+          <span class="m-hub-icon">🪞</span>
+          <div class="m-hub-info">
+            <div class="m-hub-name">Make Up</div>
+            <div class="m-hub-sub">BBクリーム・眉・リップ。ナチュラルメイク</div>
+          </div>
+          <span class="m-hub-arrow">→</span>
+        </a>
+        <a href="members/fragrance/" class="m-hub-card">
+          <span class="m-hub-icon">🌸</span>
+          <div class="m-hub-info">
+            <div class="m-hub-name">Fragrance</div>
+            <div class="m-hub-sub">シーン・季節別の香水選び</div>
+          </div>
+          <span class="m-hub-arrow">→</span>
+        </a>
+      </div>
+
+      <!-- ─── Video ─── -->
+      <div class="m-category-label">Video Content</div>
+      <div class="m-category-title">動画で学ぶ、amiのメソッド</div>
+      <div class="m-video-inline">
+        <div>
+          <div class="m-video-inline-wrap">
+            <iframe src="https://player.vimeo.com/video/1176225603?h=5b57a2de8c&badge=0&autopause=0&player_id=0&app_id=58479"
+              allow="autoplay; fullscreen; picture-in-picture" loading="lazy"
+              title="深夜ブチギレ｜準備しない人お金・時間・信頼全て溶かしすぎ"></iframe>
+          </div>
+          <p class="m-video-inline-label">深夜ブチギレ｜準備しない人お金・時間・信頼全て溶かしすぎ</p>
+        </div>
+      </div>
+      <div style="margin-top:20px;">
+        <a href="members/videos/" class="m-hub-card" style="justify-content:center;">
+          <span class="m-hub-arrow">全46本の動画ライブラリを見る →</span>
+        </a>
+      </div>
+
+      <!-- ─── Notion資料 ─── -->
+      <div class="m-category-label">Resources</div>
+      <div class="m-category-title">Notion資料・テンプレート</div>
+      <div class="m-hub-grid">
+        <a href="https://ami0.notion.site/2b93b3242a668081827bd32f3c034d52?v=2b93b3242a6680f6bef6000ce1bef266" target="_blank" rel="noopener" class="m-hub-card">
+          <span class="m-hub-icon">📋</span>
+          <div class="m-hub-info">
+            <div class="m-hub-name">Communication Database</div>
+            <div class="m-hub-sub">全11テーマのNotionデータベース</div>
+          </div>
+          <span class="m-hub-arrow">Open →</span>
+        </a>
+        <a href="https://assorted-sundae-bbd.notion.site/1b3ffb443e2680ca97c8e8251d0509d3" target="_blank" rel="noopener" class="m-hub-card">
+          <span class="m-hub-icon">📝</span>
+          <div class="m-hub-info">
+            <div class="m-hub-name">アウトプットフォーマット</div>
+            <div class="m-hub-sub">コンサル生用テンプレート</div>
+          </div>
+          <span class="m-hub-arrow">Open →</span>
+        </a>
+      </div>
+
     </div>
   </section>
 
