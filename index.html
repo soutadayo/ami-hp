@@ -1060,37 +1060,66 @@
     .sns-card.line-card .sns-handle { color: #fff; }
 
     /* ════════════════════════════
-       MEMBERS SECTION
+       MEMBERS TAB
     ════════════════════════════ */
-    #members {
+    .members-tab-bar {
       background: var(--black);
+      padding: 60px 52px 0;
       text-align: center;
-      position: relative;
-      overflow: hidden;
-    }
-    #members::before {
-      content: '';
-      position: absolute;
-      top: 0; left: 50%;
-      transform: translateX(-50%);
-      width: 1px;
-      height: 60px;
-      background: linear-gradient(to bottom, transparent, rgba(184,154,130,0.4));
-    }
-    #members .section-label { color: rgba(184,154,130,0.7); }
-    #members .section-title { color: #fff; }
-    #members .section-lead { color: rgba(255,255,255,0.5); }
-
-    .members-gate {
-      max-width: 400px;
-      margin: 48px auto 0;
     }
 
-    .members-pw-wrap {
-      position: relative;
-      margin-bottom: 16px;
+    .members-tab-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      padding: 20px 48px;
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 0.85rem;
+      letter-spacing: 0.4em;
+      text-transform: uppercase;
+      color: var(--accent);
+      background: transparent;
+      border: 1px solid rgba(184,154,130,0.3);
+      cursor: pointer;
+      transition: all 0.35s;
     }
+    .members-tab-btn:hover {
+      border-color: var(--accent);
+      background: rgba(184,154,130,0.06);
+    }
+    .members-tab-btn.active {
+      background: var(--accent);
+      color: var(--black);
+      border-color: var(--accent);
+    }
+    .members-tab-btn svg { width: 18px; height: 18px; }
 
+    /* Password overlay */
+    .members-pw-overlay {
+      display: none;
+      background: var(--black);
+      padding: 80px 52px;
+      text-align: center;
+    }
+    .members-pw-overlay.show { display: block; }
+
+    .members-pw-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(1.6rem, 3vw, 2.4rem);
+      font-weight: 300;
+      letter-spacing: 0.1em;
+      color: #fff;
+      margin-bottom: 8px;
+    }
+    .members-pw-sub {
+      font-size: 0.78rem;
+      color: rgba(255,255,255,0.4);
+      margin-bottom: 40px;
+    }
+    .members-pw-form {
+      max-width: 380px;
+      margin: 0 auto;
+    }
     .members-pw-input {
       width: 100%;
       padding: 16px 20px;
@@ -1102,10 +1131,10 @@
       color: #fff;
       outline: none;
       transition: border-color 0.3s;
+      margin-bottom: 12px;
     }
     .members-pw-input::placeholder { color: rgba(255,255,255,0.25); }
     .members-pw-input:focus { border-color: var(--accent); }
-
     .members-enter-btn {
       width: 100%;
       padding: 16px;
@@ -1123,7 +1152,6 @@
       background: var(--accent);
       color: var(--black);
     }
-
     .members-error {
       font-size: 0.72rem;
       color: #e74c3c;
@@ -1133,28 +1161,73 @@
     }
     .members-error.show { opacity: 1; }
 
-    .members-lock-icon {
-      display: inline-block;
-      margin-bottom: 24px;
-      opacity: 0.3;
-    }
-
-    /* Members content (hidden until auth) */
-    .members-content {
+    /* Members content area */
+    .members-area {
       display: none;
-      max-width: 960px;
+      background: var(--black);
+      padding: 0 52px 80px;
+    }
+    .members-area.show { display: block; }
+
+    .members-inner {
+      max-width: 1060px;
       margin: 0 auto;
     }
-    .members-content.unlocked { display: block; }
 
+    /* Category tabs inside members */
+    .m-tabs {
+      display: flex;
+      gap: 0;
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+      margin-bottom: 40px;
+      overflow-x: auto;
+      -webkit-overflow-scrolling: touch;
+    }
+    .m-tab {
+      padding: 14px 24px;
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 0.72rem;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.35);
+      background: none;
+      border: none;
+      border-bottom: 2px solid transparent;
+      cursor: pointer;
+      white-space: nowrap;
+      transition: color 0.25s, border-color 0.25s;
+    }
+    .m-tab:hover { color: rgba(255,255,255,0.7); }
+    .m-tab.active {
+      color: var(--accent);
+      border-bottom-color: var(--accent);
+    }
+
+    /* Tab panels */
+    .m-panel { display: none; text-align: left; }
+    .m-panel.active { display: block; }
+
+    .m-panel-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.6rem;
+      font-weight: 300;
+      letter-spacing: 0.08em;
+      color: #fff;
+      margin-bottom: 8px;
+    }
+    .m-panel-desc {
+      font-size: 0.78rem;
+      color: rgba(255,255,255,0.4);
+      margin-bottom: 32px;
+      line-height: 1.9;
+    }
+
+    /* Topic cards (Communication) */
     .m-topic-grid {
       display: grid;
       grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
       gap: 16px;
-      margin-top: 40px;
-      text-align: left;
     }
-
     .m-topic-card {
       display: block;
       padding: 28px 24px;
@@ -1168,12 +1241,7 @@
       border-color: rgba(184,154,130,0.3);
       transform: translateY(-3px);
     }
-
-    .m-topic-card.soon {
-      opacity: 0.35;
-      pointer-events: none;
-    }
-
+    .m-topic-card.soon { opacity: 0.35; pointer-events: none; }
     .m-topic-num {
       font-family: 'Cormorant Garamond', serif;
       font-size: 0.62rem;
@@ -1182,7 +1250,6 @@
       color: var(--accent);
       margin-bottom: 8px;
     }
-
     .m-topic-title {
       font-family: 'Cormorant Garamond', serif;
       font-size: 1.15rem;
@@ -1191,13 +1258,11 @@
       color: #fff;
       margin-bottom: 8px;
     }
-
     .m-topic-desc {
       font-size: 0.72rem;
       line-height: 1.8;
       color: rgba(255,255,255,0.45);
     }
-
     .m-topic-arrow {
       display: block;
       margin-top: 12px;
@@ -1206,7 +1271,6 @@
       letter-spacing: 0.3em;
       color: var(--accent);
     }
-
     .m-topic-tag {
       display: inline-block;
       margin-top: 12px;
@@ -1217,28 +1281,12 @@
       padding: 3px 10px;
     }
 
-    .m-category-label {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 0.62rem;
-      letter-spacing: 0.5em;
-      text-transform: uppercase;
-      color: rgba(184,154,130,0.6);
-      margin-top: 48px;
-      margin-bottom: 4px;
-      padding-bottom: 12px;
-      border-bottom: 1px solid rgba(255,255,255,0.06);
+    /* Hub cards (Knowledge Hub) */
+    .m-hub-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+      gap: 12px;
     }
-    .m-category-label:first-child { margin-top: 0; }
-
-    .m-category-title {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 1.3rem;
-      font-weight: 300;
-      letter-spacing: 0.1em;
-      color: #fff;
-      margin-bottom: 20px;
-    }
-
     .m-hub-card {
       display: flex;
       align-items: center;
@@ -1273,12 +1321,6 @@
       color: var(--accent);
     }
 
-    .m-hub-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
-      gap: 12px;
-    }
-
     .m-item-guide-link {
       display: block;
       padding: 16px 24px;
@@ -1298,29 +1340,81 @@
       color: var(--accent);
     }
 
-    .m-video-inline {
-      margin-top: 16px;
+    /* Video grid */
+    .m-video-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-      gap: 16px;
+      grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+      gap: 24px;
     }
-    .m-video-inline-wrap {
+    .m-video-item { text-align: left; }
+    .m-video-wrap {
       position: relative;
       padding-bottom: 56.25%;
       background: rgba(255,255,255,0.03);
       border: 1px solid rgba(255,255,255,0.08);
     }
-    .m-video-inline-wrap iframe {
+    .m-video-wrap iframe {
       position: absolute;
       top: 0; left: 0;
-      width: 100%;
-      height: 100%;
+      width: 100%; height: 100%;
       border: 0;
     }
-    .m-video-inline-label {
+    .m-video-label {
+      font-size: 0.72rem;
+      color: rgba(255,255,255,0.5);
+      margin-top: 10px;
+      line-height: 1.6;
+    }
+    .m-video-cat-label {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 0.62rem;
+      letter-spacing: 0.4em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-top: 32px;
+      margin-bottom: 16px;
+      padding-bottom: 8px;
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+    }
+    .m-video-cat-label:first-child { margin-top: 0; }
+
+    /* Resources */
+    .m-resource-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 16px;
+    }
+    .m-resource-card {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      padding: 24px;
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(255,255,255,0.08);
+      text-decoration: none;
+      transition: background 0.3s, border-color 0.3s;
+    }
+    .m-resource-card:hover {
+      background: rgba(255,255,255,0.08);
+      border-color: rgba(184,154,130,0.3);
+    }
+    .m-resource-icon { font-size: 1.6rem; }
+    .m-resource-info { flex: 1; }
+    .m-resource-name {
+      font-size: 0.85rem;
+      color: #fff;
+      letter-spacing: 0.05em;
+    }
+    .m-resource-desc {
       font-size: 0.68rem;
       color: rgba(255,255,255,0.4);
-      margin-top: 8px;
+      margin-top: 4px;
+    }
+    .m-resource-arrow {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 0.75rem;
+      color: var(--accent);
+      letter-spacing: 0.2em;
     }
 
     /* ════════════════════════════
@@ -1490,6 +1584,13 @@
       .footer-inner { flex-direction: column; }
 
       .cta-main-btn { padding: 18px 36px; font-size: 0.82rem; }
+      .members-tab-bar { padding: 48px 20px 0; }
+      .members-tab-btn { padding: 16px 28px; font-size: 0.75rem; letter-spacing: 0.25em; }
+      .members-pw-overlay { padding: 60px 20px; }
+      .members-area { padding: 0 20px 60px; }
+      .m-tabs { gap: 0; }
+      .m-tab { padding: 12px 14px; font-size: 0.6rem; letter-spacing: 0.15em; }
+      .m-video-grid { grid-template-columns: 1fr; }
     }
   </style>
 </head>
@@ -1944,189 +2045,197 @@
     </div>
   </section>
 
-  <!-- MEMBERS -->
-  <section id="members" class="fade-in">
-    <span class="section-label">Members Only</span>
-    <h2 class="section-title">メンバー限定<br><em>コンテンツ</em></h2>
-    <p class="section-lead">コンサル生専用の限定コンテンツエリア。<br>パスワードを入力してアクセスしてください。</p>
+  <!-- MEMBERS TAB -->
+  <div id="members" class="members-tab-bar fade-in">
+    <button class="members-tab-btn" id="membersTabBtn">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0110 0v4"/></svg>
+      メンバー限定コンテンツ
+    </button>
+  </div>
 
-    <!-- Gate (shown before auth) -->
-    <div class="members-gate" id="membersGate">
-      <svg class="members-lock-icon" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.3)" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0110 0v4"/></svg>
-      <div class="members-pw-wrap">
-        <input type="password" class="members-pw-input" id="membersPw" placeholder="パスワードを入力" autocomplete="off" />
-      </div>
+  <!-- Password overlay -->
+  <div class="members-pw-overlay" id="membersPwOverlay">
+    <h2 class="members-pw-title">Members Only</h2>
+    <p class="members-pw-sub">コンサル生専用エリアです。パスワードを入力してください。</p>
+    <div class="members-pw-form">
+      <input type="password" class="members-pw-input" id="membersPw" placeholder="パスワードを入力" autocomplete="off" />
       <button class="members-enter-btn" id="membersEnterBtn">Enter</button>
       <p class="members-error" id="membersError">パスワードが正しくありません</p>
     </div>
+  </div>
 
-    <!-- Content (shown after auth) -->
-    <div class="members-content" id="membersContent">
+  <!-- Members content area -->
+  <div class="members-area" id="membersArea">
+    <div class="members-inner">
 
-      <!-- ─── Communication ─── -->
-      <div class="m-category-label">Communication</div>
-      <div class="m-category-title">コミュニケーション 11のテーマ</div>
-      <div class="m-topic-grid">
-        <a href="members/communication/00/" class="m-topic-card">
-          <div class="m-topic-num">Topic 00</div>
-          <div class="m-topic-title">Communication</div>
-          <p class="m-topic-desc">関係構築の全体像。必ずここから始める。</p>
-          <span class="m-topic-arrow">Read →</span>
-        </a>
-        <a href="members/communication/01/" class="m-topic-card">
-          <div class="m-topic-num">Topic 01</div>
-          <div class="m-topic-title">長期関係</div>
-          <p class="m-topic-desc">メッセージ・電話・デートの積み重ねで関係を続ける方法。</p>
-          <span class="m-topic-arrow">Read →</span>
-        </a>
-        <div class="m-topic-card soon">
-          <div class="m-topic-num">Topic 02</div>
-          <div class="m-topic-title">告白の仕方・タイミング</div>
-          <p class="m-topic-desc">準備中</p>
-          <span class="m-topic-tag">Coming Soon</span>
+      <!-- Category tabs -->
+      <div class="m-tabs">
+        <button class="m-tab active" data-panel="comm">Communication</button>
+        <button class="m-tab" data-panel="knowhub">Knowledge Hub</button>
+        <button class="m-tab" data-panel="videos">Videos</button>
+        <button class="m-tab" data-panel="resources">Resources</button>
+      </div>
+
+      <!-- ═══ Communication Panel ═══ -->
+      <div class="m-panel active" id="panel-comm">
+        <h3 class="m-panel-title">コミュニケーション 11のテーマ</h3>
+        <p class="m-panel-desc">外見が整った先にある、コミュニケーションの核心。amiのコンサルで扱う11のテーマ。</p>
+        <div class="m-topic-grid">
+          <a href="members/communication/00/" class="m-topic-card">
+            <div class="m-topic-num">Topic 00</div>
+            <div class="m-topic-title">Communication</div>
+            <p class="m-topic-desc">関係構築の全体像。必ずここから始める。</p>
+            <span class="m-topic-arrow">Read →</span>
+          </a>
+          <a href="members/communication/01/" class="m-topic-card">
+            <div class="m-topic-num">Topic 01</div>
+            <div class="m-topic-title">長期関係</div>
+            <p class="m-topic-desc">メッセージ・電話・デートの積み重ねで関係を続ける方法。</p>
+            <span class="m-topic-arrow">Read →</span>
+          </a>
+          <div class="m-topic-card soon">
+            <div class="m-topic-num">Topic 02</div>
+            <div class="m-topic-title">告白の仕方・タイミング</div>
+            <p class="m-topic-desc">準備中</p>
+            <span class="m-topic-tag">Coming Soon</span>
+          </div>
+          <a href="members/communication/03/" class="m-topic-card">
+            <div class="m-topic-num">Topic 03</div>
+            <div class="m-topic-title">Escort</div>
+            <p class="m-topic-desc">デートのエスコート術。場所選び・動き方・気遣い。</p>
+            <span class="m-topic-arrow">Read →</span>
+          </a>
+          <a href="members/communication/04/" class="m-topic-card">
+            <div class="m-topic-num">Topic 04</div>
+            <div class="m-topic-title">Call</div>
+            <p class="m-topic-desc">電話での話し方・タイミング・頻度。声だけで印象を作る。</p>
+            <span class="m-topic-arrow">Read →</span>
+          </a>
+          <a href="members/communication/05/" class="m-topic-card">
+            <div class="m-topic-num">Topic 05</div>
+            <div class="m-topic-title">Message</div>
+            <p class="m-topic-desc">テキストでの好感度を上げる文章術。返信率・テンション管理。</p>
+            <span class="m-topic-arrow">Read →</span>
+          </a>
+          <a href="members/communication/06/" class="m-topic-card">
+            <div class="m-topic-num">Topic 06</div>
+            <div class="m-topic-title">Encounter</div>
+            <p class="m-topic-desc">出会いの作り方・マッチングアプリ攻略・路上での出会い方。</p>
+            <span class="m-topic-arrow">Read →</span>
+          </a>
+          <a href="members/communication/07/" class="m-topic-card">
+            <div class="m-topic-num">Topic 07</div>
+            <div class="m-topic-title">リアクション</div>
+            <p class="m-topic-desc">相手の話への反応の仕方。感情を引き出し、会話を深める。</p>
+            <span class="m-topic-arrow">Read →</span>
+          </a>
+          <a href="members/communication/08/" class="m-topic-card">
+            <div class="m-topic-num">Topic 08</div>
+            <div class="m-topic-title">Episode</div>
+            <p class="m-topic-desc">エピソードトークで人を感動させる。実践動画15本収録。</p>
+            <span class="m-topic-arrow">Read →</span>
+          </a>
+          <div class="m-topic-card soon">
+            <div class="m-topic-num">Topic 09</div>
+            <div class="m-topic-title">話す力</div>
+            <p class="m-topic-desc">準備中</p>
+            <span class="m-topic-tag">Coming Soon</span>
+          </div>
+          <div class="m-topic-card soon">
+            <div class="m-topic-num">Topic 10</div>
+            <div class="m-topic-title">聞く力</div>
+            <p class="m-topic-desc">準備中</p>
+            <span class="m-topic-tag">Coming Soon</span>
+          </div>
         </div>
-        <a href="members/communication/03/" class="m-topic-card">
-          <div class="m-topic-num">Topic 03</div>
-          <div class="m-topic-title">Escort</div>
-          <p class="m-topic-desc">デートのエスコート術。場所選び・動き方・気遣い。</p>
-          <span class="m-topic-arrow">Read →</span>
+      </div>
+
+      <!-- ═══ Knowledge Hub Panel ═══ -->
+      <div class="m-panel" id="panel-knowhub">
+        <h3 class="m-panel-title">外見を変える5つの領域</h3>
+        <p class="m-panel-desc">ファッション・ヘア・スキンケア・メイク・フレグランス。外見を変える5つの領域の最新アイテムと手法をカテゴリ別に収録。</p>
+        <a href="members/item-guide/" class="m-item-guide-link">
+          <span>Must Read First — アイテムガイド総論</span>
         </a>
-        <a href="members/communication/04/" class="m-topic-card">
-          <div class="m-topic-num">Topic 04</div>
-          <div class="m-topic-title">Call</div>
-          <p class="m-topic-desc">電話での話し方・タイミング・頻度。声だけで印象を作る。</p>
-          <span class="m-topic-arrow">Read →</span>
-        </a>
-        <a href="members/communication/05/" class="m-topic-card">
-          <div class="m-topic-num">Topic 05</div>
-          <div class="m-topic-title">Message</div>
-          <p class="m-topic-desc">テキストでの好感度を上げる文章術。返信率・テンション管理。</p>
-          <span class="m-topic-arrow">Read →</span>
-        </a>
-        <a href="members/communication/06/" class="m-topic-card">
-          <div class="m-topic-num">Topic 06</div>
-          <div class="m-topic-title">Encounter</div>
-          <p class="m-topic-desc">出会いの作り方・マッチングアプリ攻略・路上での出会い方。</p>
-          <span class="m-topic-arrow">Read →</span>
-        </a>
-        <a href="members/communication/07/" class="m-topic-card">
-          <div class="m-topic-num">Topic 07</div>
-          <div class="m-topic-title">リアクション</div>
-          <p class="m-topic-desc">相手の話への反応の仕方。感情を引き出し、会話を深める。</p>
-          <span class="m-topic-arrow">Read →</span>
-        </a>
-        <a href="members/communication/08/" class="m-topic-card">
-          <div class="m-topic-num">Topic 08</div>
-          <div class="m-topic-title">Episode</div>
-          <p class="m-topic-desc">エピソードトークで人を感動させる。実践動画15本収録。</p>
-          <span class="m-topic-arrow">Read →</span>
-        </a>
-        <div class="m-topic-card soon">
-          <div class="m-topic-num">Topic 09</div>
-          <div class="m-topic-title">話す力</div>
-          <p class="m-topic-desc">準備中</p>
-          <span class="m-topic-tag">Coming Soon</span>
+        <div class="m-hub-grid">
+          <a href="members/fashion/" class="m-hub-card">
+            <span class="m-hub-icon">👔</span>
+            <div class="m-hub-info"><div class="m-hub-name">Fashion</div><div class="m-hub-sub">アウター・トップス・ボトムス・シューズ・アクセサリー</div></div>
+            <span class="m-hub-arrow">→</span>
+          </a>
+          <a href="members/hair/" class="m-hub-card">
+            <span class="m-hub-icon">✂️</span>
+            <div class="m-hub-info"><div class="m-hub-name">Hair</div><div class="m-hub-sub">髪型・ヘアケア・スタイリング</div></div>
+            <span class="m-hub-arrow">→</span>
+          </a>
+          <a href="members/skincare/" class="m-hub-card">
+            <span class="m-hub-icon">💧</span>
+            <div class="m-hub-info"><div class="m-hub-name">Skin Care</div><div class="m-hub-sub">肌質改善・クレンジング・保湿</div></div>
+            <span class="m-hub-arrow">→</span>
+          </a>
+          <a href="members/makeup/" class="m-hub-card">
+            <span class="m-hub-icon">🪞</span>
+            <div class="m-hub-info"><div class="m-hub-name">Make Up</div><div class="m-hub-sub">BBクリーム・眉・リップ。ナチュラルメイク</div></div>
+            <span class="m-hub-arrow">→</span>
+          </a>
+          <a href="members/fragrance/" class="m-hub-card">
+            <span class="m-hub-icon">🌸</span>
+            <div class="m-hub-info"><div class="m-hub-name">Fragrance</div><div class="m-hub-sub">シーン・季節別の香水選び</div></div>
+            <span class="m-hub-arrow">→</span>
+          </a>
         </div>
-        <div class="m-topic-card soon">
-          <div class="m-topic-num">Topic 10</div>
-          <div class="m-topic-title">聞く力</div>
-          <p class="m-topic-desc">準備中</p>
-          <span class="m-topic-tag">Coming Soon</span>
+      </div>
+
+      <!-- ═══ Videos Panel ═══ -->
+      <div class="m-panel" id="panel-videos">
+        <h3 class="m-panel-title">動画で学ぶ、amiのメソッド</h3>
+        <p class="m-panel-desc">コンサルで実際に使っているノウハウを動画で公開。カテゴリ別に整理された全動画ライブラリ。</p>
+
+        <div class="m-video-cat-label">Mindset</div>
+        <div class="m-video-grid">
+          <div class="m-video-item">
+            <div class="m-video-wrap">
+              <iframe src="https://player.vimeo.com/video/1176225603?h=5b57a2de8c&badge=0&autopause=0&player_id=0&app_id=58479"
+                allow="autoplay; fullscreen; picture-in-picture" loading="lazy"
+                title="深夜ブチギレ｜準備しない人お金・時間・信頼全て溶かしすぎ"></iframe>
+            </div>
+            <p class="m-video-label">深夜ブチギレ｜準備しない人お金・時間・信頼全て溶かしすぎ</p>
+          </div>
+        </div>
+
+        <div style="margin-top:40px;">
+          <a href="members/videos/" class="m-hub-card" style="justify-content:center;">
+            <span class="m-hub-arrow">全46本の動画ライブラリを見る →</span>
+          </a>
         </div>
       </div>
 
-      <!-- ─── Knowledge Hub ─── -->
-      <div class="m-category-label">Knowledge Hub</div>
-      <div class="m-category-title">外見を変える5つの領域</div>
-      <a href="members/item-guide/" class="m-item-guide-link">
-        <span>Must Read First — アイテムガイド総論</span>
-      </a>
-      <div class="m-hub-grid">
-        <a href="members/fashion/" class="m-hub-card">
-          <span class="m-hub-icon">👔</span>
-          <div class="m-hub-info">
-            <div class="m-hub-name">Fashion</div>
-            <div class="m-hub-sub">アウター・トップス・ボトムス・シューズ・アクセサリー</div>
-          </div>
-          <span class="m-hub-arrow">→</span>
-        </a>
-        <a href="members/hair/" class="m-hub-card">
-          <span class="m-hub-icon">✂️</span>
-          <div class="m-hub-info">
-            <div class="m-hub-name">Hair</div>
-            <div class="m-hub-sub">髪型・ヘアケア・スタイリング</div>
-          </div>
-          <span class="m-hub-arrow">→</span>
-        </a>
-        <a href="members/skincare/" class="m-hub-card">
-          <span class="m-hub-icon">💧</span>
-          <div class="m-hub-info">
-            <div class="m-hub-name">Skin Care</div>
-            <div class="m-hub-sub">肌質改善・クレンジング・保湿</div>
-          </div>
-          <span class="m-hub-arrow">→</span>
-        </a>
-        <a href="members/makeup/" class="m-hub-card">
-          <span class="m-hub-icon">🪞</span>
-          <div class="m-hub-info">
-            <div class="m-hub-name">Make Up</div>
-            <div class="m-hub-sub">BBクリーム・眉・リップ。ナチュラルメイク</div>
-          </div>
-          <span class="m-hub-arrow">→</span>
-        </a>
-        <a href="members/fragrance/" class="m-hub-card">
-          <span class="m-hub-icon">🌸</span>
-          <div class="m-hub-info">
-            <div class="m-hub-name">Fragrance</div>
-            <div class="m-hub-sub">シーン・季節別の香水選び</div>
-          </div>
-          <span class="m-hub-arrow">→</span>
-        </a>
-      </div>
-
-      <!-- ─── Video ─── -->
-      <div class="m-category-label">Video Content</div>
-      <div class="m-category-title">動画で学ぶ、amiのメソッド</div>
-      <div class="m-video-inline">
-        <div>
-          <div class="m-video-inline-wrap">
-            <iframe src="https://player.vimeo.com/video/1176225603?h=5b57a2de8c&badge=0&autopause=0&player_id=0&app_id=58479"
-              allow="autoplay; fullscreen; picture-in-picture" loading="lazy"
-              title="深夜ブチギレ｜準備しない人お金・時間・信頼全て溶かしすぎ"></iframe>
-          </div>
-          <p class="m-video-inline-label">深夜ブチギレ｜準備しない人お金・時間・信頼全て溶かしすぎ</p>
+      <!-- ═══ Resources Panel ═══ -->
+      <div class="m-panel" id="panel-resources">
+        <h3 class="m-panel-title">資料・テンプレート</h3>
+        <p class="m-panel-desc">コンサルで使用する資料やテンプレート。</p>
+        <div class="m-resource-grid">
+          <a href="https://ami0.notion.site/2b93b3242a668081827bd32f3c034d52?v=2b93b3242a6680f6bef6000ce1bef266" target="_blank" rel="noopener" class="m-resource-card">
+            <span class="m-resource-icon">📋</span>
+            <div class="m-resource-info">
+              <div class="m-resource-name">Communication Database</div>
+              <div class="m-resource-desc">全11テーマのNotionデータベース</div>
+            </div>
+            <span class="m-resource-arrow">Open →</span>
+          </a>
+          <a href="https://assorted-sundae-bbd.notion.site/1b3ffb443e2680ca97c8e8251d0509d3" target="_blank" rel="noopener" class="m-resource-card">
+            <span class="m-resource-icon">📝</span>
+            <div class="m-resource-info">
+              <div class="m-resource-name">アウトプットフォーマット</div>
+              <div class="m-resource-desc">コンサル生用テンプレート</div>
+            </div>
+            <span class="m-resource-arrow">Open →</span>
+          </a>
         </div>
-      </div>
-      <div style="margin-top:20px;">
-        <a href="members/videos/" class="m-hub-card" style="justify-content:center;">
-          <span class="m-hub-arrow">全46本の動画ライブラリを見る →</span>
-        </a>
-      </div>
-
-      <!-- ─── Notion資料 ─── -->
-      <div class="m-category-label">Resources</div>
-      <div class="m-category-title">Notion資料・テンプレート</div>
-      <div class="m-hub-grid">
-        <a href="https://ami0.notion.site/2b93b3242a668081827bd32f3c034d52?v=2b93b3242a6680f6bef6000ce1bef266" target="_blank" rel="noopener" class="m-hub-card">
-          <span class="m-hub-icon">📋</span>
-          <div class="m-hub-info">
-            <div class="m-hub-name">Communication Database</div>
-            <div class="m-hub-sub">全11テーマのNotionデータベース</div>
-          </div>
-          <span class="m-hub-arrow">Open →</span>
-        </a>
-        <a href="https://assorted-sundae-bbd.notion.site/1b3ffb443e2680ca97c8e8251d0509d3" target="_blank" rel="noopener" class="m-hub-card">
-          <span class="m-hub-icon">📝</span>
-          <div class="m-hub-info">
-            <div class="m-hub-name">アウトプットフォーマット</div>
-            <div class="m-hub-sub">コンサル生用テンプレート</div>
-          </div>
-          <span class="m-hub-arrow">Open →</span>
-        </a>
       </div>
 
     </div>
-  </section>
+  </div>
 
   <!-- FOOTER -->
   <footer>
@@ -2274,13 +2383,14 @@
     });
   </script>
 
-  <!-- Members Auth -->
+  <!-- Members Auth + Tabs -->
   <script>
     (function() {
       const HASH = 'f9caac86b591b594d0f3bc54111cfa87cc9cb4c2c89f7fbd05bd3a42165dbea0';
       const COOKIE_KEY = 'ami_members_auth';
-      const gate = document.getElementById('membersGate');
-      const content = document.getElementById('membersContent');
+      const tabBtn = document.getElementById('membersTabBtn');
+      const pwOverlay = document.getElementById('membersPwOverlay');
+      const area = document.getElementById('membersArea');
       const pwInput = document.getElementById('membersPw');
       const enterBtn = document.getElementById('membersEnterBtn');
       const errorMsg = document.getElementById('membersError');
@@ -2289,21 +2399,41 @@
         const m = document.cookie.match(new RegExp('(?:^|; )' + name + '=([^;]*)'));
         return m ? m[1] : null;
       }
-
       function setCookie(name, val) {
         document.cookie = name + '=' + val + ';path=/;max-age=2592000;SameSite=Lax';
       }
 
-      function unlock() {
-        gate.style.display = 'none';
-        content.classList.add('unlocked');
+      function showContent() {
+        pwOverlay.classList.remove('show');
+        area.classList.add('show');
+        tabBtn.classList.add('active');
       }
 
-      // Check existing cookie
+      // If already authed via cookie, show content immediately
       if (getCookie(COOKIE_KEY) === HASH) {
-        unlock();
+        showContent();
       }
 
+      // Tab button click
+      tabBtn.addEventListener('click', function() {
+        if (area.classList.contains('show')) {
+          // Toggle close
+          area.classList.remove('show');
+          pwOverlay.classList.remove('show');
+          tabBtn.classList.remove('active');
+        } else if (getCookie(COOKIE_KEY) === HASH) {
+          showContent();
+          area.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        } else {
+          // Show password overlay
+          pwOverlay.classList.toggle('show');
+          if (pwOverlay.classList.contains('show')) {
+            setTimeout(function() { pwInput.focus(); }, 100);
+          }
+        }
+      });
+
+      // Auth
       async function tryAuth() {
         const pw = pwInput.value;
         if (!pw) return;
@@ -2311,16 +2441,27 @@
         const hash = Array.from(new Uint8Array(buf)).map(b => b.toString(16).padStart(2, '0')).join('');
         if (hash === HASH) {
           setCookie(COOKIE_KEY, HASH);
-          unlock();
+          showContent();
+          area.scrollIntoView({ behavior: 'smooth', block: 'start' });
         } else {
           errorMsg.classList.add('show');
           pwInput.value = '';
-          setTimeout(() => errorMsg.classList.remove('show'), 2500);
+          setTimeout(function() { errorMsg.classList.remove('show'); }, 2500);
         }
       }
-
       enterBtn.addEventListener('click', tryAuth);
       pwInput.addEventListener('keydown', function(e) { if (e.key === 'Enter') tryAuth(); });
+
+      // Inner category tabs
+      var mTabs = document.querySelectorAll('.m-tab');
+      mTabs.forEach(function(tab) {
+        tab.addEventListener('click', function() {
+          mTabs.forEach(function(t) { t.classList.remove('active'); });
+          tab.classList.add('active');
+          document.querySelectorAll('.m-panel').forEach(function(p) { p.classList.remove('active'); });
+          document.getElementById('panel-' + tab.dataset.panel).classList.add('active');
+        });
+      });
     })();
   </script>
 
