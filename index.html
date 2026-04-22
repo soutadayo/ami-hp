@@ -1154,6 +1154,164 @@
     .sns-card.line-card .sns-handle { color: #fff; }
 
     /* ════════════════════════════
+       MEMBERS SECTION
+    ════════════════════════════ */
+    #members {
+      background: var(--black);
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+    #members::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 50%;
+      transform: translateX(-50%);
+      width: 1px;
+      height: 60px;
+      background: linear-gradient(to bottom, transparent, rgba(184,154,130,0.4));
+    }
+    #members .section-label { color: rgba(184,154,130,0.7); }
+    #members .section-title { color: #fff; }
+    #members .section-lead { color: rgba(255,255,255,0.5); }
+
+    .members-gate {
+      max-width: 400px;
+      margin: 48px auto 0;
+    }
+
+    .members-pw-wrap {
+      position: relative;
+      margin-bottom: 16px;
+    }
+
+    .members-pw-input {
+      width: 100%;
+      padding: 16px 20px;
+      font-family: 'Noto Serif JP', serif;
+      font-size: 0.85rem;
+      letter-spacing: 0.08em;
+      background: rgba(255,255,255,0.06);
+      border: 1px solid rgba(255,255,255,0.12);
+      color: #fff;
+      outline: none;
+      transition: border-color 0.3s;
+    }
+    .members-pw-input::placeholder { color: rgba(255,255,255,0.25); }
+    .members-pw-input:focus { border-color: var(--accent); }
+
+    .members-enter-btn {
+      width: 100%;
+      padding: 16px;
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 0.82rem;
+      letter-spacing: 0.35em;
+      text-transform: uppercase;
+      background: transparent;
+      border: 1px solid var(--accent);
+      color: var(--accent);
+      cursor: pointer;
+      transition: background 0.3s, color 0.3s;
+    }
+    .members-enter-btn:hover {
+      background: var(--accent);
+      color: var(--black);
+    }
+
+    .members-error {
+      font-size: 0.72rem;
+      color: #e74c3c;
+      margin-top: 12px;
+      opacity: 0;
+      transition: opacity 0.3s;
+    }
+    .members-error.show { opacity: 1; }
+
+    .members-lock-icon {
+      display: inline-block;
+      margin-bottom: 24px;
+      opacity: 0.3;
+    }
+
+    /* Members content (hidden until auth) */
+    .members-content {
+      display: none;
+      max-width: 960px;
+      margin: 0 auto;
+    }
+    .members-content.unlocked { display: block; }
+
+    .m-topic-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+      gap: 16px;
+      margin-top: 40px;
+      text-align: left;
+    }
+
+    .m-topic-card {
+      display: block;
+      padding: 28px 24px;
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(255,255,255,0.08);
+      text-decoration: none;
+      transition: background 0.3s, border-color 0.3s, transform 0.3s;
+    }
+    .m-topic-card:hover {
+      background: rgba(255,255,255,0.08);
+      border-color: rgba(184,154,130,0.3);
+      transform: translateY(-3px);
+    }
+
+    .m-topic-card.soon {
+      opacity: 0.35;
+      pointer-events: none;
+    }
+
+    .m-topic-num {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 0.62rem;
+      letter-spacing: 0.4em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 8px;
+    }
+
+    .m-topic-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.15rem;
+      font-weight: 400;
+      letter-spacing: 0.12em;
+      color: #fff;
+      margin-bottom: 8px;
+    }
+
+    .m-topic-desc {
+      font-size: 0.72rem;
+      line-height: 1.8;
+      color: rgba(255,255,255,0.45);
+    }
+
+    .m-topic-arrow {
+      display: block;
+      margin-top: 12px;
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 0.7rem;
+      letter-spacing: 0.3em;
+      color: var(--accent);
+    }
+
+    .m-topic-tag {
+      display: inline-block;
+      margin-top: 12px;
+      font-size: 0.6rem;
+      letter-spacing: 0.2em;
+      color: rgba(255,255,255,0.25);
+      border: 1px solid rgba(255,255,255,0.1);
+      padding: 3px 10px;
+    }
+
+    /* ════════════════════════════
        FOOTER
     ════════════════════════════ */
     footer {
@@ -1821,6 +1979,107 @@
     </div>
   </section>
 
+  <!-- MEMBERS -->
+  <section id="members" class="fade-in">
+    <span class="section-label">Members Only</span>
+    <h2 class="section-title">メンバー限定<br><em>コンテンツ</em></h2>
+    <p class="section-lead">コンサル生専用の限定コンテンツエリア。<br>パスワードを入力してアクセスしてください。</p>
+
+    <!-- Gate (shown before auth) -->
+    <div class="members-gate" id="membersGate">
+      <svg class="members-lock-icon" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.3)" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0110 0v4"/></svg>
+      <div class="members-pw-wrap">
+        <input type="password" class="members-pw-input" id="membersPw" placeholder="パスワードを入力" autocomplete="off" />
+      </div>
+      <button class="members-enter-btn" id="membersEnterBtn">Enter</button>
+      <p class="members-error" id="membersError">パスワードが正しくありません</p>
+    </div>
+
+    <!-- Content (shown after auth) -->
+    <div class="members-content" id="membersContent">
+      <div class="m-topic-grid">
+
+        <a href="members/communication/00/" class="m-topic-card">
+          <div class="m-topic-num">Topic 00</div>
+          <div class="m-topic-title">Communication</div>
+          <p class="m-topic-desc">関係構築の全体像。このシリーズを読む前に必ずここから始める。</p>
+          <span class="m-topic-arrow">Read →</span>
+        </a>
+
+        <a href="members/communication/01/" class="m-topic-card">
+          <div class="m-topic-num">Topic 01</div>
+          <div class="m-topic-title">長期関係</div>
+          <p class="m-topic-desc">メッセージ・電話・デートの積み重ねで関係を続ける方法。</p>
+          <span class="m-topic-arrow">Read →</span>
+        </a>
+
+        <div class="m-topic-card soon">
+          <div class="m-topic-num">Topic 02</div>
+          <div class="m-topic-title">告白の仕方・タイミング</div>
+          <p class="m-topic-desc">コンテンツ準備中です。</p>
+          <span class="m-topic-tag">Coming Soon</span>
+        </div>
+
+        <a href="members/communication/03/" class="m-topic-card">
+          <div class="m-topic-num">Topic 03</div>
+          <div class="m-topic-title">Escort</div>
+          <p class="m-topic-desc">デートのエスコート術。場所選び・動き方・気遣いの全て。</p>
+          <span class="m-topic-arrow">Read →</span>
+        </a>
+
+        <a href="members/communication/04/" class="m-topic-card">
+          <div class="m-topic-num">Topic 04</div>
+          <div class="m-topic-title">Call</div>
+          <p class="m-topic-desc">電話での話し方・タイミング・頻度。声だけで印象を作る。</p>
+          <span class="m-topic-arrow">Read →</span>
+        </a>
+
+        <a href="members/communication/05/" class="m-topic-card">
+          <div class="m-topic-num">Topic 05</div>
+          <div class="m-topic-title">Message</div>
+          <p class="m-topic-desc">テキストでの好感度を上げる文章術。返信率・テンション管理。</p>
+          <span class="m-topic-arrow">Read →</span>
+        </a>
+
+        <a href="members/communication/06/" class="m-topic-card">
+          <div class="m-topic-num">Topic 06</div>
+          <div class="m-topic-title">Encounter</div>
+          <p class="m-topic-desc">出会いの作り方・マッチングアプリ攻略・路上での出会い方。</p>
+          <span class="m-topic-arrow">Read →</span>
+        </a>
+
+        <a href="members/communication/07/" class="m-topic-card">
+          <div class="m-topic-num">Topic 07</div>
+          <div class="m-topic-title">リアクション</div>
+          <p class="m-topic-desc">相手の話への反応の仕方。感情を引き出し、会話を深める。</p>
+          <span class="m-topic-arrow">Read →</span>
+        </a>
+
+        <a href="members/communication/08/" class="m-topic-card">
+          <div class="m-topic-num">Topic 08</div>
+          <div class="m-topic-title">Episode</div>
+          <p class="m-topic-desc">エピソードトークで人を感動させる。実践動画15本収録。</p>
+          <span class="m-topic-arrow">Read →</span>
+        </a>
+
+        <div class="m-topic-card soon">
+          <div class="m-topic-num">Topic 09</div>
+          <div class="m-topic-title">話す力</div>
+          <p class="m-topic-desc">コンテンツ準備中です。</p>
+          <span class="m-topic-tag">Coming Soon</span>
+        </div>
+
+        <div class="m-topic-card soon">
+          <div class="m-topic-num">Topic 10</div>
+          <div class="m-topic-title">聞く力</div>
+          <p class="m-topic-desc">コンテンツ準備中です。</p>
+          <span class="m-topic-tag">Coming Soon</span>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
   <!-- FOOTER -->
   <footer>
     <div class="footer-inner">
@@ -1832,6 +2091,7 @@
           <li><a href="#services">Services</a></li>
           <li><a href="#gallery">Gallery</a></li>
           <li><a href="#sns">SNS</a></li>
+          <li><a href="#members">Members</a></li>
         </ul>
       </nav>
     </div>
@@ -1964,6 +2224,56 @@
         lbImg.src = images[currentIndex];
       }
     });
+  </script>
+
+  <!-- Members Auth -->
+  <script>
+    (function() {
+      const HASH = 'f9caac86b591b594d0f3bc54111cfa87cc9cb4c2c89f7fbd05bd3a42165dbea0';
+      const COOKIE_KEY = 'ami_members_auth';
+      const gate = document.getElementById('membersGate');
+      const content = document.getElementById('membersContent');
+      const pwInput = document.getElementById('membersPw');
+      const enterBtn = document.getElementById('membersEnterBtn');
+      const errorMsg = document.getElementById('membersError');
+
+      function getCookie(name) {
+        const m = document.cookie.match(new RegExp('(?:^|; )' + name + '=([^;]*)'));
+        return m ? m[1] : null;
+      }
+
+      function setCookie(name, val) {
+        document.cookie = name + '=' + val + ';path=/;max-age=2592000;SameSite=Lax';
+      }
+
+      function unlock() {
+        gate.style.display = 'none';
+        content.classList.add('unlocked');
+      }
+
+      // Check existing cookie
+      if (getCookie(COOKIE_KEY) === HASH) {
+        unlock();
+      }
+
+      async function tryAuth() {
+        const pw = pwInput.value;
+        if (!pw) return;
+        const buf = await crypto.subtle.digest('SHA-256', new TextEncoder().encode(pw));
+        const hash = Array.from(new Uint8Array(buf)).map(b => b.toString(16).padStart(2, '0')).join('');
+        if (hash === HASH) {
+          setCookie(COOKIE_KEY, HASH);
+          unlock();
+        } else {
+          errorMsg.classList.add('show');
+          pwInput.value = '';
+          setTimeout(() => errorMsg.classList.remove('show'), 2500);
+        }
+      }
+
+      enterBtn.addEventListener('click', tryAuth);
+      pwInput.addEventListener('keydown', function(e) { if (e.key === 'Enter') tryAuth(); });
+    })();
   </script>
 
   <!-- CMS content loader -->
