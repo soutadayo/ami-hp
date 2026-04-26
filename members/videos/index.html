@@ -456,16 +456,6 @@
 
   </div>
 </div>
-<script>
-  const HASH='f9caac86b591b594d0f3bc54111cfa87cc9cb4c2c89f7fbd05bd3a42165dbea0';
-  const COOKIE='ami_members_auth';
-  function getCookie(n){return document.cookie.split(';').map(c=>c.trim()).find(c=>c.startsWith(n+'='))?.split('=')[1]||'';}
-  function checkAuth(){
-    const val=getCookie(COOKIE);
-    if(val!==HASH){window.location.replace('../');return;}
-    document.getElementById('page').style.display='block';
-  }
-  checkAuth();
-</script>
+<script>document.getElementById('page').style.display='block';</script>
 </body>
 </html>
