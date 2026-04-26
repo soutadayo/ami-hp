@@ -36,7 +36,7 @@
     /* ════════════════════════════
        NAV
     ════════════════════════════ */
-    nav {
+    #main-nav {
       position: fixed;
       top: 0; left: 0; right: 0;
       z-index: 200;
@@ -50,7 +50,7 @@
       border-bottom: 1px solid transparent;
       transition: background 0.4s, border-color 0.3s, backdrop-filter 0.4s;
     }
-    nav.scrolled {
+    #main-nav.scrolled {
       background: rgba(250,250,248,0.92);
       backdrop-filter: blur(12px);
       -webkit-backdrop-filter: blur(12px);
@@ -68,7 +68,7 @@
       z-index: 201;
       transition: color 0.4s;
     }
-    nav.scrolled .nav-logo { color: var(--black); }
+    #main-nav.scrolled .nav-logo { color: var(--black); }
 
     .nav-links {
       display: flex;
@@ -86,7 +86,7 @@
       position: relative;
       padding-bottom: 3px;
     }
-    nav.scrolled .nav-links a { color: var(--gray); }
+    #main-nav.scrolled .nav-links a { color: var(--gray); }
     .nav-links a::after {
       content: '';
       position: absolute;
@@ -97,8 +97,8 @@
     }
     .nav-links a:hover,
     .nav-links a.active { color: rgba(255,255,255,1); }
-    nav.scrolled .nav-links a:hover,
-    nav.scrolled .nav-links a.active { color: var(--black); }
+    #main-nav.scrolled .nav-links a:hover,
+    #main-nav.scrolled .nav-links a.active { color: var(--black); }
     .nav-links a:hover::after,
     .nav-links a.active::after { width: 100%; }
 
@@ -132,7 +132,7 @@
       background: rgba(255,255,255,0.95);
       transition: all 0.3s;
     }
-    nav.scrolled .hamburger span { background: var(--black); }
+    #main-nav.scrolled .hamburger span { background: var(--black); }
     .hamburger.open span:nth-child(1) { transform: translateY(6px) rotate(45deg); }
     .hamburger.open span:nth-child(2) { opacity: 0; }
     .hamburger.open span:nth-child(3) { transform: translateY(-6px) rotate(-45deg); }
@@ -1534,7 +1534,7 @@
        RESPONSIVE
     ════════════════════════════ */
     @media (max-width: 900px) {
-      nav { padding: 18px 24px; }
+      #main-nav { padding: 18px 24px; }
       .nav-links, .nav-line-btn { display: none; }
       .hamburger { display: flex; }
 
@@ -1594,7 +1594,7 @@
     }
 
     @media (max-width: 640px) {
-      nav { padding: 18px 20px; }
+      #main-nav { padding: 18px 20px; }
 
       #hero { padding: 0 20px 56px 24px; height: 70svh; min-height: 420px; }
       .hero-scroll { right: 20px; }
