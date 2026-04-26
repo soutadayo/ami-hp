@@ -1173,76 +1173,7 @@
       margin: 0 auto;
     }
 
-    /* Category tabs inside members */
-    .m-tabs {
-      display: flex;
-      gap: 0;
-      border-bottom: 1px solid rgba(255,255,255,0.08);
-      margin-bottom: 40px;
-      overflow-x: auto;
-      -webkit-overflow-scrolling: touch;
-    }
-    .m-tab {
-      padding: 14px 24px;
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 0.72rem;
-      letter-spacing: 0.3em;
-      text-transform: uppercase;
-      color: rgba(255,255,255,0.35);
-      background: none;
-      border: none;
-      border-bottom: 2px solid transparent;
-      cursor: pointer;
-      white-space: nowrap;
-      transition: color 0.25s, border-color 0.25s;
-    }
-    .m-tab:hover { color: rgba(255,255,255,0.7); }
-    .m-tab.active {
-      color: var(--accent);
-      border-bottom-color: var(--accent);
-    }
-
-    /* Tab panels */
-    .m-panel { display: none; text-align: left; }
-    .m-panel.active { display: block; }
-
-    .m-panel-title {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 1.6rem;
-      font-weight: 300;
-      letter-spacing: 0.08em;
-      color: #fff;
-      margin-bottom: 8px;
-    }
-    .m-panel-desc {
-      font-size: 0.78rem;
-      color: rgba(255,255,255,0.4);
-      margin-bottom: 32px;
-      line-height: 1.9;
-    }
-
-    .m-pw-notice {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      background: rgba(184,158,130,0.12);
-      border: 1px solid rgba(184,158,130,0.25);
-      border-radius: 8px;
-      padding: 12px 18px;
-      margin-bottom: 24px;
-      font-size: 0.78rem;
-      color: rgba(255,255,255,0.7);
-      letter-spacing: 0.02em;
-    }
-    .m-pw-notice strong {
-      color: var(--accent);
-      font-weight: 400;
-      letter-spacing: 0.08em;
-      user-select: all;
-    }
-    .m-pw-icon { font-size: 1rem; }
-
-    /* Simple link list (Communication & Knowledge Hub) */
+    /* Simple link list — member content */
     .m-link-list {
       display: flex;
       flex-direction: column;
@@ -1294,84 +1225,6 @@
       letter-spacing: 0.2em;
       color: var(--accent);
       flex-shrink: 0;
-    }
-
-
-    /* Video grid */
-    .m-video-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
-      gap: 24px;
-    }
-    .m-video-item { text-align: left; }
-    .m-video-wrap {
-      position: relative;
-      padding-bottom: 56.25%;
-      background: rgba(255,255,255,0.03);
-      border: 1px solid rgba(255,255,255,0.08);
-    }
-    .m-video-wrap iframe {
-      position: absolute;
-      top: 0; left: 0;
-      width: 100%; height: 100%;
-      border: 0;
-    }
-    .m-video-label {
-      font-size: 0.72rem;
-      color: rgba(255,255,255,0.5);
-      margin-top: 10px;
-      line-height: 1.6;
-    }
-    .m-video-cat-label {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 0.62rem;
-      letter-spacing: 0.4em;
-      text-transform: uppercase;
-      color: var(--accent);
-      margin-top: 32px;
-      margin-bottom: 16px;
-      padding-bottom: 8px;
-      border-bottom: 1px solid rgba(255,255,255,0.06);
-    }
-    .m-video-cat-label:first-child { margin-top: 0; }
-
-    /* Resources */
-    .m-resource-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-      gap: 16px;
-    }
-    .m-resource-card {
-      display: flex;
-      align-items: center;
-      gap: 16px;
-      padding: 24px;
-      background: rgba(255,255,255,0.04);
-      border: 1px solid rgba(255,255,255,0.08);
-      text-decoration: none;
-      transition: background 0.3s, border-color 0.3s;
-    }
-    .m-resource-card:hover {
-      background: rgba(255,255,255,0.08);
-      border-color: rgba(184,154,130,0.3);
-    }
-    .m-resource-icon { font-size: 1.6rem; }
-    .m-resource-info { flex: 1; }
-    .m-resource-name {
-      font-size: 0.85rem;
-      color: #fff;
-      letter-spacing: 0.05em;
-    }
-    .m-resource-desc {
-      font-size: 0.68rem;
-      color: rgba(255,255,255,0.4);
-      margin-top: 4px;
-    }
-    .m-resource-arrow {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 0.75rem;
-      color: var(--accent);
-      letter-spacing: 0.2em;
     }
 
     /* ════════════════════════════
@@ -1565,8 +1418,6 @@
       .members-tab-btn { padding: 16px 28px; font-size: 0.75rem; letter-spacing: 0.25em; }
       .members-pw-overlay { padding: 60px 20px; }
       .members-area { padding: 0 20px 60px; }
-      .m-tabs { gap: 0; }
-      .m-tab { padding: 12px 14px; font-size: 0.6rem; letter-spacing: 0.15em; }
       .m-video-grid { grid-template-columns: 1fr; }
     }
   </style>
@@ -2045,152 +1896,35 @@
   <div class="members-area" id="membersArea">
     <div class="members-inner">
 
-      <!-- Category tabs -->
-      <div class="m-tabs">
-        <button class="m-tab active" data-panel="comm">Communication</button>
-        <button class="m-tab" data-panel="knowhub">Knowledge Hub</button>
-        <button class="m-tab" data-panel="videos">Videos</button>
-        <button class="m-tab" data-panel="resources">Resources</button>
-      </div>
-
-      <!-- ═══ Communication Panel ═══ -->
-      <div class="m-panel active" id="panel-comm">
-        <h3 class="m-panel-title">コミュニケーション 11のテーマ</h3>
-        <p class="m-panel-desc">外見が整った先にある、コミュニケーションの核心。amiのコンサルで扱う11のテーマ。</p>
-        <div class="m-pw-notice">
-          <span class="m-pw-icon">🔑</span>
-          <span>各ページの閲覧パスワード: <strong>i</strong></span>
-        </div>
-        <div class="m-link-list">
-          <a href="https://ami0.com/2025/12/06/essential0/" target="_blank" rel="noopener" class="m-link-item">
-            <span class="m-link-num">00</span>
-            <div class="m-link-body"><div class="m-link-title">Communication</div><div class="m-link-desc">関係構築の全体像</div></div>
-            <span class="m-link-arrow">→</span>
-          </a>
-          <a href="https://ami0.com/2025/12/06/essential1/" target="_blank" rel="noopener" class="m-link-item">
-            <span class="m-link-num">01</span>
-            <div class="m-link-body"><div class="m-link-title">長期関係</div><div class="m-link-desc">メッセージ・電話・デートの積み重ね</div></div>
-            <span class="m-link-arrow">→</span>
-          </a>
-          <div class="m-link-item soon">
-            <span class="m-link-num">02</span>
-            <div class="m-link-body"><div class="m-link-title">告白の仕方・タイミング</div><div class="m-link-tag">Coming Soon</div></div>
+      <!-- ═══ Member Content Links ═══ -->
+      <div class="m-link-list">
+        <a href="https://ami0.notion.site/2b93b3242a668081827bd32f3c034d52?v=2b93b3242a6680f6bef6000ce1bef266" target="_blank" rel="noopener" class="m-link-item">
+          <div class="m-link-body">
+            <div class="m-link-title">Communication</div>
+            <div class="m-link-desc">コミュニケーション11テーマ・関係構築の全体像</div>
           </div>
-          <a href="https://ami0.com/2025/07/12/date/" target="_blank" rel="noopener" class="m-link-item">
-            <span class="m-link-num">03</span>
-            <div class="m-link-body"><div class="m-link-title">Escort</div><div class="m-link-desc">デート・エスコート</div></div>
-            <span class="m-link-arrow">→</span>
-          </a>
-          <a href="https://ami0.com/2025/07/12/phone/" target="_blank" rel="noopener" class="m-link-item">
-            <span class="m-link-num">04</span>
-            <div class="m-link-body"><div class="m-link-title">Call</div><div class="m-link-desc">電話</div></div>
-            <span class="m-link-arrow">→</span>
-          </a>
-          <a href="https://ami0.com/2025/06/08/message/" target="_blank" rel="noopener" class="m-link-item">
-            <span class="m-link-num">05</span>
-            <div class="m-link-body"><div class="m-link-title">Message</div><div class="m-link-desc">メッセージ</div></div>
-            <span class="m-link-arrow">→</span>
-          </a>
-          <a href="https://ami0.com/2025/07/12/encounter/" target="_blank" rel="noopener" class="m-link-item">
-            <span class="m-link-num">06</span>
-            <div class="m-link-body"><div class="m-link-title">Encounter</div><div class="m-link-desc">出会い</div></div>
-            <span class="m-link-arrow">→</span>
-          </a>
-          <div class="m-link-item soon">
-            <span class="m-link-num">07</span>
-            <div class="m-link-body"><div class="m-link-title">リアクション</div><div class="m-link-tag">Coming Soon</div></div>
+          <span class="m-link-arrow">→</span>
+        </a>
+        <a href="https://ami0.notion.site/2d63b3242a6680eb85b0f6624c6ff929?v=2d63b3242a6680508812000c5009edb9&p=2d63b3242a6680deb59ddcc5ac681425&pm=c" target="_blank" rel="noopener" class="m-link-item">
+          <div class="m-link-body">
+            <div class="m-link-title">Knowledge Hub</div>
+            <div class="m-link-desc">Fashion・Hair・Skin Care・Make Up・Fragrance</div>
           </div>
-          <a href="https://ami0.com/2025/07/12/episode/" target="_blank" rel="noopener" class="m-link-item">
-            <span class="m-link-num">08</span>
-            <div class="m-link-body"><div class="m-link-title">Episode</div><div class="m-link-desc">エピソードトーク</div></div>
-            <span class="m-link-arrow">→</span>
-          </a>
-          <div class="m-link-item soon">
-            <span class="m-link-num">09</span>
-            <div class="m-link-body"><div class="m-link-title">話す力</div><div class="m-link-tag">Coming Soon</div></div>
+          <span class="m-link-arrow">→</span>
+        </a>
+        <a href="#" class="m-link-item" style="pointer-events:none; opacity:0.35;">
+          <div class="m-link-body">
+            <div class="m-link-title">Videos</div>
+            <div class="m-link-desc">動画コンテンツ — 準備中</div>
           </div>
-          <div class="m-link-item soon">
-            <span class="m-link-num">10</span>
-            <div class="m-link-body"><div class="m-link-title">聞く力</div><div class="m-link-tag">Coming Soon</div></div>
+        </a>
+        <a href="https://assorted-sundae-bbd.notion.site/1b3ffb443e2680ca97c8e8251d0509d3" target="_blank" rel="noopener" class="m-link-item">
+          <div class="m-link-body">
+            <div class="m-link-title">アウトプットフォーマット</div>
+            <div class="m-link-desc">コンサル生用テンプレート</div>
           </div>
-        </div>
-      </div>
-
-      <!-- ═══ Knowledge Hub Panel ═══ -->
-      <div class="m-panel" id="panel-knowhub">
-        <h3 class="m-panel-title">外見を変える5つの領域</h3>
-        <p class="m-panel-desc">ファッション・ヘア・スキンケア・メイク・フレグランス。外見を変える5つの領域の最新アイテムと手法をカテゴリ別に収録。</p>
-        <div class="m-link-list">
-          <a href="members/item-guide/" class="m-link-item">
-            <span class="m-link-num" style="color:#fff;">必読</span>
-            <div class="m-link-body"><div class="m-link-title">アイテムガイド総論</div><div class="m-link-desc">まず最初に読むべき全体像</div></div>
-            <span class="m-link-arrow">→</span>
-          </a>
-          <a href="https://note.com/preview/n73e553f153fe?prev_access_key=745b63760c822a427f4d4956a6afdc12" target="_blank" rel="noopener" class="m-link-item">
-            <span class="m-link-num">01</span>
-            <div class="m-link-body"><div class="m-link-title">Fashion</div><div class="m-link-desc">アウター・トップス・ボトムス・シューズ・アクセサリー</div></div>
-            <span class="m-link-arrow">→</span>
-          </a>
-          <a href="https://note.com/preview/n0d140a4e7f8d?prev_access_key=7617d6b0348ff3440b848f6254d308b2" target="_blank" rel="noopener" class="m-link-item">
-            <span class="m-link-num">02</span>
-            <div class="m-link-body"><div class="m-link-title">Hair</div><div class="m-link-desc">髪型・ヘアケア・スタイリング</div></div>
-            <span class="m-link-arrow">→</span>
-          </a>
-          <a href="https://note.com/preview/nc978d7f78980?prev_access_key=78f8d24a6f7ded9640efb32d1f1e72ee" target="_blank" rel="noopener" class="m-link-item">
-            <span class="m-link-num">03</span>
-            <div class="m-link-body"><div class="m-link-title">Skin Care</div><div class="m-link-desc">肌質改善・クレンジング・保湿</div></div>
-            <span class="m-link-arrow">→</span>
-          </a>
-          <a href="https://note.com/preview/n978ecab9b6b7?prev_access_key=a941f360bc7039fb7dd1ace5cd3f3b2a" target="_blank" rel="noopener" class="m-link-item">
-            <span class="m-link-num">04</span>
-            <div class="m-link-body"><div class="m-link-title">Make Up</div><div class="m-link-desc">BBクリーム・眉・リップ。ナチュラルメイク</div></div>
-            <span class="m-link-arrow">→</span>
-          </a>
-          <a href="https://note.com/preview/nb525688b1088?prev_access_key=ad5ef35c8615f657c0efedfd13e0a4f1" target="_blank" rel="noopener" class="m-link-item">
-            <span class="m-link-num">05</span>
-            <div class="m-link-body"><div class="m-link-title">Fragrance</div><div class="m-link-desc">シーン・季節別の香水選び</div></div>
-            <span class="m-link-arrow">→</span>
-          </a>
-        </div>
-      </div>
-
-      <!-- ═══ Videos Panel ═══ -->
-      <div class="m-panel" id="panel-videos">
-        <h3 class="m-panel-title">Videos</h3>
-        <p class="m-panel-desc">コンサル生向けの動画コンテンツ。カテゴリ名と動画URLを追加予定。</p>
-        <p style="font-size:0.78rem; color:rgba(255,255,255,0.35); padding:40px 0; text-align:center; letter-spacing:0.05em;">動画コンテンツ準備中</p>
-      </div>
-
-      <!-- ═══ Resources Panel ═══ -->
-      <div class="m-panel" id="panel-resources">
-        <h3 class="m-panel-title">資料・テンプレート</h3>
-        <p class="m-panel-desc">コンサルで使用する資料やテンプレート。</p>
-        <div class="m-resource-grid">
-          <a href="https://ami0.notion.site/2b93b3242a668081827bd32f3c034d52?v=2b93b3242a6680f6bef6000ce1bef266" target="_blank" rel="noopener" class="m-resource-card">
-            <span class="m-resource-icon">📋</span>
-            <div class="m-resource-info">
-              <div class="m-resource-name">Communication Database</div>
-              <div class="m-resource-desc">全11テーマのNotionデータベース</div>
-            </div>
-            <span class="m-resource-arrow">Open →</span>
-          </a>
-          <a href="https://assorted-sundae-bbd.notion.site/1b3ffb443e2680ca97c8e8251d0509d3" target="_blank" rel="noopener" class="m-resource-card">
-            <span class="m-resource-icon">📝</span>
-            <div class="m-resource-info">
-              <div class="m-resource-name">アウトプットフォーマット</div>
-              <div class="m-resource-desc">コンサル生用テンプレート</div>
-            </div>
-            <span class="m-resource-arrow">Open →</span>
-          </a>
-          <a href="https://ami0.notion.site/2d63b3242a6680eb85b0f6624c6ff929?v=2d63b3242a6680508812000c5009edb9" target="_blank" rel="noopener" class="m-resource-card">
-            <span class="m-resource-icon">📂</span>
-            <div class="m-resource-info">
-              <div class="m-resource-name">Knowledge Hub Database</div>
-              <div class="m-resource-desc">外見5領域のNotionデータベース</div>
-            </div>
-            <span class="m-resource-arrow">Open →</span>
-          </a>
-        </div>
+          <span class="m-link-arrow">→</span>
+        </a>
       </div>
 
     </div>
@@ -2411,21 +2145,6 @@
       enterBtn.addEventListener('click', tryAuth);
       pwInput.addEventListener('keydown', function(e) { if (e.key === 'Enter') tryAuth(); });
 
-      // Inner category tabs
-      var mTabs = document.querySelectorAll('.m-tab');
-      mTabs.forEach(function(tab) {
-        tab.addEventListener('click', function() {
-          // Videos tab → 別ページへ遷移
-          if (tab.dataset.href) {
-            window.location.href = tab.dataset.href;
-            return;
-          }
-          mTabs.forEach(function(t) { t.classList.remove('active'); });
-          tab.classList.add('active');
-          document.querySelectorAll('.m-panel').forEach(function(p) { p.classList.remove('active'); });
-          document.getElementById('panel-' + tab.dataset.panel).classList.add('active');
-        });
-      });
     })();
   </script>
 
