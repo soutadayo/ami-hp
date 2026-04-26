@@ -1242,123 +1242,60 @@
     }
     .m-pw-icon { font-size: 1rem; }
 
-    /* Topic cards (Communication) */
-    .m-topic-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+    /* Simple link list (Communication & Knowledge Hub) */
+    .m-link-list {
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+    }
+    .m-link-item {
+      display: flex;
+      align-items: baseline;
       gap: 16px;
-    }
-    .m-topic-card {
-      display: block;
-      padding: 28px 24px;
-      background: rgba(255,255,255,0.04);
-      border: 1px solid rgba(255,255,255,0.08);
+      padding: 18px 0;
+      border-bottom: 1px solid rgba(255,255,255,0.06);
       text-decoration: none;
-      transition: background 0.3s, border-color 0.3s, transform 0.3s;
+      transition: background 0.2s;
     }
-    .m-topic-card:hover {
-      background: rgba(255,255,255,0.08);
-      border-color: rgba(184,154,130,0.3);
-      transform: translateY(-3px);
-    }
-    .m-topic-card.soon { opacity: 0.35; pointer-events: none; }
-    .m-topic-num {
+    .m-link-item:first-child { border-top: 1px solid rgba(255,255,255,0.06); }
+    .m-link-item:hover { background: rgba(255,255,255,0.03); }
+    .m-link-item.soon { opacity: 0.3; pointer-events: none; }
+    .m-link-num {
       font-family: 'Cormorant Garamond', serif;
       font-size: 0.62rem;
-      letter-spacing: 0.4em;
-      text-transform: uppercase;
-      color: var(--accent);
-      margin-bottom: 8px;
-    }
-    .m-topic-title {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 1.15rem;
-      font-weight: 400;
-      letter-spacing: 0.12em;
-      color: #fff;
-      margin-bottom: 8px;
-    }
-    .m-topic-desc {
-      font-size: 0.72rem;
-      line-height: 1.8;
-      color: rgba(255,255,255,0.45);
-    }
-    .m-topic-arrow {
-      display: block;
-      margin-top: 12px;
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 0.7rem;
       letter-spacing: 0.3em;
       color: var(--accent);
+      flex-shrink: 0;
+      min-width: 52px;
     }
-    .m-topic-tag {
-      display: inline-block;
-      margin-top: 12px;
-      font-size: 0.6rem;
-      letter-spacing: 0.2em;
-      color: rgba(255,255,255,0.25);
-      border: 1px solid rgba(255,255,255,0.1);
-      padding: 3px 10px;
-    }
-
-    /* Hub cards (Knowledge Hub) */
-    .m-hub-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
-      gap: 12px;
-    }
-    .m-hub-card {
-      display: flex;
-      align-items: center;
-      gap: 16px;
-      padding: 20px 24px;
-      background: rgba(255,255,255,0.04);
-      border: 1px solid rgba(255,255,255,0.08);
-      text-decoration: none;
-      transition: background 0.3s, border-color 0.3s;
-    }
-    .m-hub-card:hover {
-      background: rgba(255,255,255,0.08);
-      border-color: rgba(184,154,130,0.3);
-    }
-    .m-hub-icon { font-size: 1.4rem; }
-    .m-hub-info { flex: 1; text-align: left; }
-    .m-hub-name {
+    .m-link-body { flex: 1; }
+    .m-link-title {
       font-family: 'Cormorant Garamond', serif;
-      font-size: 0.95rem;
-      letter-spacing: 0.15em;
+      font-size: 1rem;
+      font-weight: 400;
+      letter-spacing: 0.1em;
       color: #fff;
     }
-    .m-hub-sub {
-      font-size: 0.68rem;
+    .m-link-desc {
+      font-size: 0.72rem;
       color: rgba(255,255,255,0.4);
+      margin-top: 3px;
+      line-height: 1.7;
+    }
+    .m-link-tag {
+      font-size: 0.58rem;
+      letter-spacing: 0.15em;
+      color: rgba(255,255,255,0.2);
       margin-top: 4px;
     }
-    .m-hub-arrow {
+    .m-link-arrow {
       font-family: 'Cormorant Garamond', serif;
-      font-size: 0.75rem;
+      font-size: 0.68rem;
       letter-spacing: 0.2em;
       color: var(--accent);
+      flex-shrink: 0;
     }
 
-    .m-item-guide-link {
-      display: block;
-      padding: 16px 24px;
-      background: rgba(184,154,130,0.08);
-      border: 1px solid rgba(184,154,130,0.2);
-      text-decoration: none;
-      text-align: center;
-      margin-bottom: 16px;
-      transition: background 0.3s;
-    }
-    .m-item-guide-link:hover { background: rgba(184,154,130,0.15); }
-    .m-item-guide-link span {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 0.75rem;
-      letter-spacing: 0.3em;
-      text-transform: uppercase;
-      color: var(--accent);
-    }
 
     /* Video grid */
     .m-video-grid {
@@ -2112,7 +2049,7 @@
       <div class="m-tabs">
         <button class="m-tab active" data-panel="comm">Communication</button>
         <button class="m-tab" data-panel="knowhub">Knowledge Hub</button>
-        <button class="m-tab" data-panel="videos" data-href="members/videos/">Videos</button>
+        <button class="m-tab" data-panel="videos">Videos</button>
         <button class="m-tab" data-panel="resources">Resources</button>
       </div>
 
@@ -2124,72 +2061,57 @@
           <span class="m-pw-icon">🔑</span>
           <span>各ページの閲覧パスワード: <strong>i</strong></span>
         </div>
-        <div class="m-topic-grid">
-          <a href="https://ami0.com/2025/12/06/essential0/" target="_blank" rel="noopener" class="m-topic-card">
-            <div class="m-topic-num">Topic 00</div>
-            <div class="m-topic-title">Communication</div>
-            <p class="m-topic-desc">関係構築の全体像</p>
-            <span class="m-topic-arrow">Open →</span>
+        <div class="m-link-list">
+          <a href="https://ami0.com/2025/12/06/essential0/" target="_blank" rel="noopener" class="m-link-item">
+            <span class="m-link-num">00</span>
+            <div class="m-link-body"><div class="m-link-title">Communication</div><div class="m-link-desc">関係構築の全体像</div></div>
+            <span class="m-link-arrow">→</span>
           </a>
-          <a href="https://ami0.com/2025/12/06/essential1/" target="_blank" rel="noopener" class="m-topic-card">
-            <div class="m-topic-num">Topic 01</div>
-            <div class="m-topic-title">長期関係</div>
-            <p class="m-topic-desc">メッセージ・電話・デートの積み重ね</p>
-            <span class="m-topic-arrow">Open →</span>
+          <a href="https://ami0.com/2025/12/06/essential1/" target="_blank" rel="noopener" class="m-link-item">
+            <span class="m-link-num">01</span>
+            <div class="m-link-body"><div class="m-link-title">長期関係</div><div class="m-link-desc">メッセージ・電話・デートの積み重ね</div></div>
+            <span class="m-link-arrow">→</span>
           </a>
-          <div class="m-topic-card soon">
-            <div class="m-topic-num">Topic 02</div>
-            <div class="m-topic-title">告白の仕方・タイミング</div>
-            <p class="m-topic-desc">準備中</p>
-            <span class="m-topic-tag">Coming Soon</span>
+          <div class="m-link-item soon">
+            <span class="m-link-num">02</span>
+            <div class="m-link-body"><div class="m-link-title">告白の仕方・タイミング</div><div class="m-link-tag">Coming Soon</div></div>
           </div>
-          <a href="https://ami0.com/2025/07/12/date/" target="_blank" rel="noopener" class="m-topic-card">
-            <div class="m-topic-num">Topic 03</div>
-            <div class="m-topic-title">Escort</div>
-            <p class="m-topic-desc">デート・エスコート</p>
-            <span class="m-topic-arrow">Open →</span>
+          <a href="https://ami0.com/2025/07/12/date/" target="_blank" rel="noopener" class="m-link-item">
+            <span class="m-link-num">03</span>
+            <div class="m-link-body"><div class="m-link-title">Escort</div><div class="m-link-desc">デート・エスコート</div></div>
+            <span class="m-link-arrow">→</span>
           </a>
-          <a href="https://ami0.com/2025/07/12/phone/" target="_blank" rel="noopener" class="m-topic-card">
-            <div class="m-topic-num">Topic 04</div>
-            <div class="m-topic-title">Call</div>
-            <p class="m-topic-desc">電話</p>
-            <span class="m-topic-arrow">Open →</span>
+          <a href="https://ami0.com/2025/07/12/phone/" target="_blank" rel="noopener" class="m-link-item">
+            <span class="m-link-num">04</span>
+            <div class="m-link-body"><div class="m-link-title">Call</div><div class="m-link-desc">電話</div></div>
+            <span class="m-link-arrow">→</span>
           </a>
-          <a href="https://ami0.com/2025/06/08/message/" target="_blank" rel="noopener" class="m-topic-card">
-            <div class="m-topic-num">Topic 05</div>
-            <div class="m-topic-title">Message</div>
-            <p class="m-topic-desc">メッセージ</p>
-            <span class="m-topic-arrow">Open →</span>
+          <a href="https://ami0.com/2025/06/08/message/" target="_blank" rel="noopener" class="m-link-item">
+            <span class="m-link-num">05</span>
+            <div class="m-link-body"><div class="m-link-title">Message</div><div class="m-link-desc">メッセージ</div></div>
+            <span class="m-link-arrow">→</span>
           </a>
-          <a href="https://ami0.com/2025/07/12/encounter/" target="_blank" rel="noopener" class="m-topic-card">
-            <div class="m-topic-num">Topic 06</div>
-            <div class="m-topic-title">Encounter</div>
-            <p class="m-topic-desc">出会い</p>
-            <span class="m-topic-arrow">Open →</span>
+          <a href="https://ami0.com/2025/07/12/encounter/" target="_blank" rel="noopener" class="m-link-item">
+            <span class="m-link-num">06</span>
+            <div class="m-link-body"><div class="m-link-title">Encounter</div><div class="m-link-desc">出会い</div></div>
+            <span class="m-link-arrow">→</span>
           </a>
-          <div class="m-topic-card soon">
-            <div class="m-topic-num">Topic 07</div>
-            <div class="m-topic-title">リアクション</div>
-            <p class="m-topic-desc">準備中</p>
-            <span class="m-topic-tag">Coming Soon</span>
+          <div class="m-link-item soon">
+            <span class="m-link-num">07</span>
+            <div class="m-link-body"><div class="m-link-title">リアクション</div><div class="m-link-tag">Coming Soon</div></div>
           </div>
-          <a href="https://ami0.com/2025/07/12/episode/" target="_blank" rel="noopener" class="m-topic-card">
-            <div class="m-topic-num">Topic 08</div>
-            <div class="m-topic-title">Episode</div>
-            <p class="m-topic-desc">エピソードトーク</p>
-            <span class="m-topic-arrow">Open →</span>
+          <a href="https://ami0.com/2025/07/12/episode/" target="_blank" rel="noopener" class="m-link-item">
+            <span class="m-link-num">08</span>
+            <div class="m-link-body"><div class="m-link-title">Episode</div><div class="m-link-desc">エピソードトーク</div></div>
+            <span class="m-link-arrow">→</span>
           </a>
-          <div class="m-topic-card soon">
-            <div class="m-topic-num">Topic 09</div>
-            <div class="m-topic-title">話す力</div>
-            <p class="m-topic-desc">準備中</p>
-            <span class="m-topic-tag">Coming Soon</span>
+          <div class="m-link-item soon">
+            <span class="m-link-num">09</span>
+            <div class="m-link-body"><div class="m-link-title">話す力</div><div class="m-link-tag">Coming Soon</div></div>
           </div>
-          <div class="m-topic-card soon">
-            <div class="m-topic-num">Topic 10</div>
-            <div class="m-topic-title">聞く力</div>
-            <p class="m-topic-desc">準備中</p>
-            <span class="m-topic-tag">Coming Soon</span>
+          <div class="m-link-item soon">
+            <span class="m-link-num">10</span>
+            <div class="m-link-body"><div class="m-link-title">聞く力</div><div class="m-link-tag">Coming Soon</div></div>
           </div>
         </div>
       </div>
@@ -2198,40 +2120,46 @@
       <div class="m-panel" id="panel-knowhub">
         <h3 class="m-panel-title">外見を変える5つの領域</h3>
         <p class="m-panel-desc">ファッション・ヘア・スキンケア・メイク・フレグランス。外見を変える5つの領域の最新アイテムと手法をカテゴリ別に収録。</p>
-        <a href="members/item-guide/" class="m-item-guide-link">
-          <span>Must Read First — アイテムガイド総論</span>
-        </a>
-        <div class="m-hub-grid">
-          <a href="https://note.com/preview/n73e553f153fe?prev_access_key=745b63760c822a427f4d4956a6afdc12" target="_blank" rel="noopener" class="m-hub-card">
-            <span class="m-hub-icon">👔</span>
-            <div class="m-hub-info"><div class="m-hub-name">Fashion</div><div class="m-hub-sub">アウター・トップス・ボトムス・シューズ・アクセサリー</div></div>
-            <span class="m-hub-arrow">→</span>
+        <div class="m-link-list">
+          <a href="members/item-guide/" class="m-link-item">
+            <span class="m-link-num" style="color:#fff;">必読</span>
+            <div class="m-link-body"><div class="m-link-title">アイテムガイド総論</div><div class="m-link-desc">まず最初に読むべき全体像</div></div>
+            <span class="m-link-arrow">→</span>
           </a>
-          <a href="https://note.com/preview/n0d140a4e7f8d?prev_access_key=7617d6b0348ff3440b848f6254d308b2" target="_blank" rel="noopener" class="m-hub-card">
-            <span class="m-hub-icon">✂️</span>
-            <div class="m-hub-info"><div class="m-hub-name">Hair</div><div class="m-hub-sub">髪型・ヘアケア・スタイリング</div></div>
-            <span class="m-hub-arrow">→</span>
+          <a href="https://note.com/preview/n73e553f153fe?prev_access_key=745b63760c822a427f4d4956a6afdc12" target="_blank" rel="noopener" class="m-link-item">
+            <span class="m-link-num">01</span>
+            <div class="m-link-body"><div class="m-link-title">Fashion</div><div class="m-link-desc">アウター・トップス・ボトムス・シューズ・アクセサリー</div></div>
+            <span class="m-link-arrow">→</span>
           </a>
-          <a href="https://note.com/preview/nc978d7f78980?prev_access_key=78f8d24a6f7ded9640efb32d1f1e72ee" target="_blank" rel="noopener" class="m-hub-card">
-            <span class="m-hub-icon">💧</span>
-            <div class="m-hub-info"><div class="m-hub-name">Skin Care</div><div class="m-hub-sub">肌質改善・クレンジング・保湿</div></div>
-            <span class="m-hub-arrow">→</span>
+          <a href="https://note.com/preview/n0d140a4e7f8d?prev_access_key=7617d6b0348ff3440b848f6254d308b2" target="_blank" rel="noopener" class="m-link-item">
+            <span class="m-link-num">02</span>
+            <div class="m-link-body"><div class="m-link-title">Hair</div><div class="m-link-desc">髪型・ヘアケア・スタイリング</div></div>
+            <span class="m-link-arrow">→</span>
           </a>
-          <a href="https://note.com/preview/n978ecab9b6b7?prev_access_key=a941f360bc7039fb7dd1ace5cd3f3b2a" target="_blank" rel="noopener" class="m-hub-card">
-            <span class="m-hub-icon">🪞</span>
-            <div class="m-hub-info"><div class="m-hub-name">Make Up</div><div class="m-hub-sub">BBクリーム・眉・リップ。ナチュラルメイク</div></div>
-            <span class="m-hub-arrow">→</span>
+          <a href="https://note.com/preview/nc978d7f78980?prev_access_key=78f8d24a6f7ded9640efb32d1f1e72ee" target="_blank" rel="noopener" class="m-link-item">
+            <span class="m-link-num">03</span>
+            <div class="m-link-body"><div class="m-link-title">Skin Care</div><div class="m-link-desc">肌質改善・クレンジング・保湿</div></div>
+            <span class="m-link-arrow">→</span>
           </a>
-          <a href="https://note.com/preview/nb525688b1088?prev_access_key=ad5ef35c8615f657c0efedfd13e0a4f1" target="_blank" rel="noopener" class="m-hub-card">
-            <span class="m-hub-icon">🌸</span>
-            <div class="m-hub-info"><div class="m-hub-name">Fragrance</div><div class="m-hub-sub">シーン・季節別の香水選び</div></div>
-            <span class="m-hub-arrow">→</span>
+          <a href="https://note.com/preview/n978ecab9b6b7?prev_access_key=a941f360bc7039fb7dd1ace5cd3f3b2a" target="_blank" rel="noopener" class="m-link-item">
+            <span class="m-link-num">04</span>
+            <div class="m-link-body"><div class="m-link-title">Make Up</div><div class="m-link-desc">BBクリーム・眉・リップ。ナチュラルメイク</div></div>
+            <span class="m-link-arrow">→</span>
+          </a>
+          <a href="https://note.com/preview/nb525688b1088?prev_access_key=ad5ef35c8615f657c0efedfd13e0a4f1" target="_blank" rel="noopener" class="m-link-item">
+            <span class="m-link-num">05</span>
+            <div class="m-link-body"><div class="m-link-title">Fragrance</div><div class="m-link-desc">シーン・季節別の香水選び</div></div>
+            <span class="m-link-arrow">→</span>
           </a>
         </div>
       </div>
 
-      <!-- ═══ Videos Panel (別階層に遷移するためパネル不要 / フォールバック用に残す) ═══ -->
-      <div class="m-panel" id="panel-videos" style="display:none;"></div>
+      <!-- ═══ Videos Panel ═══ -->
+      <div class="m-panel" id="panel-videos">
+        <h3 class="m-panel-title">Videos</h3>
+        <p class="m-panel-desc">コンサル生向けの動画コンテンツ。カテゴリ名と動画URLを追加予定。</p>
+        <p style="font-size:0.78rem; color:rgba(255,255,255,0.35); padding:40px 0; text-align:center; letter-spacing:0.05em;">動画コンテンツ準備中</p>
+      </div>
 
       <!-- ═══ Resources Panel ═══ -->
       <div class="m-panel" id="panel-resources">
